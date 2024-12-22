@@ -40,7 +40,7 @@ const BlogPost = () => {
         
           {posts.map((post, index) => (
             
-              <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+              <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden">
                 <img
                   src={post.image}
                   alt={post.title}

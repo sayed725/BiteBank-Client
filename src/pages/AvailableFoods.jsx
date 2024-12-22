@@ -59,7 +59,7 @@ const AvailableFoods = () => {
           </div>
           <button className='btn'>Reset</button>
         </div>
-        <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+        <div className='grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {foods.map(food => (
             < FoodCard key={food._id} food={food} />
           ))}
@@ -71,6 +71,4 @@ const AvailableFoods = () => {
 
 export default AvailableFoods
 
-//  <span className='text-xs font-light text-gray-800 '>
-//           Deadline: {format(new Date(deadline), 'P')}
-//         </span>
+
