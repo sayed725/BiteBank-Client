@@ -12,138 +12,166 @@ const AddFood = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     const form = e.target
-    const title = form.job_title.value
-    const email = form.email.value
-    const deadline = startDate
-    const category = form.category.value
-    const min_price = parseFloat(form.min_price.value)
-    const max_price = parseFloat(form.max_price.value)
-    const description = form.description.value
+    const name = form.name.value
+    const image = form.image.value
+    // image must be a url 
+    const imageRegex = new RegExp(
+      "^(https?:\\/\\/)" + // Protocol
+        "((([a-zA-Z0-9$_.+!*'(),-])+\\.)+[a-zA-Z]{2,})" + // Domain name
+        "(\\/([a-zA-Z0-9$_.+!*'(),-]|%[0-9a-fA-F]{2})*)*$", // Path
+      "i"
+    );
+    if (!imageRegex.test(image)) {
+      toast.error("Enter a Valid Link");
+      return;
+    }
 
-    const formData = {
-      title,
-      buyer: {
-        email,
+
+
+    const quantity = parseInt(form.quantity.value)
+    const location = form.location.value
+    const deadline = startDate
+    const status = form.status.value
+    const notes = form.notes.value
+   
+
+    const foodData = {
+      name,
+      image,
+      quantity,
+      deadline,
+      location,
+      status,
+      notes,
+      donator: {
+        email: user?.email,
         name: user?.displayName,
         photo: user?.photoURL,
       },
-      deadline,
-      category,
-      min_price,
-      max_price,
-      description,
-      bid_count: 0,
+     
     }
+    console.log(foodData)
     try {
       // 1. make a post request
-      await axios.post(`${import.meta.env.VITE_API_URL}/add-job`, formData)
-      // 2. Reset form
-      form.reset()
-      // 3. Show toast and navigate
-      toast.success('Data Added Successfully!!!')
-      navigate('/my-posted-jobs')
+      await axios.post(`${import.meta.env.VITE_API_URL}/add-food`, foodData)
+      .then(res=>{
+        // console.log(res.data)
+        if(res.data.insertedId){
+          toast.success('Food Added Successfully!!')
+          form.reset()
+          // navigate('/my-posted-jobs')
+        }
+      })
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err.message)
     }
   }
 
   return (
-    <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
-      <section className=' p-2 md:p-6 mx-auto bg-white rounded-md shadow-md '>
-        <h2 className='text-lg font-semibold text-gray-700 capitalize '>
-          Post a Job
+    <div className='lg:w-2/4 mx-auto flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
+      <section className='w-full py-10 md:p-6 mx-auto bg-white rounded-md shadow-md '>
+        <h2 className='text-center text-2xl font-semibold text-gray-700 capitalize '>
+          Add a Food
         </h2>
 
-        <form onSubmit={handleSubmit}>
-          <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
+        <form className='px-2' onSubmit={handleSubmit}>
+          <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-1'>
             <div>
-              <label className='text-gray-700 ' htmlFor='job_title'>
-                Job Title
+              <label className='text-gray-700 ' htmlFor='food_name'>
+                Food Name
               </label>
               <input
-                id='job_title'
-                name='job_title'
+                id='name'
+                name='name'
                 type='text'
+                required
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
 
             <div>
               <label className='text-gray-700 ' htmlFor='emailAddress'>
-                Email Address
+                Food Image Url
               </label>
               <input
-                id='emailAddress'
-                type='email'
-                name='email'
-                defaultValue={user?.email}
-                disabled={true}
+                id='food_image'
+                type='text'
+                name='image'
+                required
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
-            <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700'>Deadline</label>
 
-              {/* Date Picker Input Field */}
-              <DatePicker
-                className='border p-2 rounded-md'
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-              />
-            </div>
-
-            <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700 ' htmlFor='category'>
-                Category
-              </label>
-              <select
-                name='category'
-                id='category'
-                className='border p-2 rounded-md'
-              >
-                <option value='Web Development'>Web Development</option>
-                <option value='Graphics Design'>Graphics Design</option>
-                <option value='Digital Marketing'>Digital Marketing</option>
-              </select>
-            </div>
             <div>
               <label className='text-gray-700 ' htmlFor='min_price'>
-                Minimum Price
+                Total Quantity
               </label>
               <input
-                id='min_price'
-                name='min_price'
+                id='quantity'
+                name='quantity'
                 type='number'
+                required
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
 
             <div>
               <label className='text-gray-700 ' htmlFor='max_price'>
-                Maximum Price
+                Pickup Location
               </label>
               <input
-                id='max_price'
-                name='max_price'
-                type='number'
+                id='location'
+                name='location'
+                required
+                type='text'
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
+            <div className='flex flex-col gap-2 '>
+              <label className='text-gray-700'>Expired Date</label>
+
+              {/* Date Picker Input Field */}
+              <DatePicker
+                className='border p-2 w-full rounded-md'
+                selected={startDate}
+                required
+                onChange={date => setStartDate(date)}
+              />
+            </div>
+            <div>
+              <label className='text-gray-700 ' htmlFor='max_price'>
+                Food Status
+              </label>
+             
+               <select
+               id='status'
+               name='status'
+               required
+               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              >
+                <option value='Available'>Available</option>
+                <option value='Not Available'>Not Available</option>
+                <option value='Coming Soon'>Coming Soon</option>
+              </select>
+            </div>
+
+           
           </div>
           <div className='flex flex-col gap-2 mt-4'>
             <label className='text-gray-700 ' htmlFor='description'>
-              Description
+              Additional Notes
             </label>
             <textarea
               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-              name='description'
-              id='description'
+              name='notes'
+              id='notes'
+              required
             ></textarea>
           </div>
-          <div className='flex justify-end mt-6'>
-            <button className='disabled:cursor-not-allowed px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
-              Save
+          <div className='flex justify-end mt-10'>
+            <button className=' px-8 py-2.5 w-full leading-5 text-white transition-colors duration-300 transhtmlForm bg-[#ebb475] rounded-md hover:text-black focus:outline-none focus:text-black'>
+              Add Food
             </button>
           </div>
         </form>

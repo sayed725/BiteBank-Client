@@ -1,13 +1,13 @@
 import BlogPost from '../components/BlogPost'
 import Carousel from '../components/Carousel'
 import StatsSection from '../components/StatusSection'
-import TabCategories from '../components/TabCategories'
+import AvailableFoods from './AvailableFoods'
 
 const Home = () => {
   return (
     <div>
       <Carousel />
-      <TabCategories />
+      <AvailableFoods />
       <StatsSection />
       <BlogPost />
     </div>
