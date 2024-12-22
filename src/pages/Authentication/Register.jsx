@@ -17,7 +17,18 @@ const Registration = () => {
     const name = form.name.value
     const photo = form.photo.value
     const pass = form.password.value
-    console.log({ email, pass, name, photo })
+    if (pass.length < 6) {
+      toast.error('Password must be 6 character or more')
+      return;
+  } 
+ 
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).*$/;
+  if (!passwordRegex.test(pass)) {
+      toast.error('At least one uppercase, one lowercase character');
+      return;
+  }  
+
+    // console.log({ email, pass, name, photo })
     try {
       //2. User Registration
       const result = await createUser(email, pass)
@@ -27,7 +38,7 @@ const Registration = () => {
       toast.success('Signup Successful')
       navigate('/')
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err?.message)
     }
   }
@@ -40,7 +51,7 @@ const Registration = () => {
       toast.success('Signin Successful')
       navigate('/')
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err?.message)
     }
   }
@@ -108,6 +119,7 @@ const Registration = () => {
                 id='name'
                 autoComplete='name'
                 name='name'
+                required
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
               />
@@ -123,6 +135,7 @@ const Registration = () => {
                 id='photo'
                 autoComplete='photo'
                 name='photo'
+                required
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
               />
@@ -137,6 +150,7 @@ const Registration = () => {
               <input
                 id='LoggingEmailAddress'
                 autoComplete='email'
+                required
                 name='email'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='email'
@@ -157,6 +171,7 @@ const Registration = () => {
                 id='loggingPassword'
                 autoComplete='current-password'
                 name='password'
+                required
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='password'
               />
