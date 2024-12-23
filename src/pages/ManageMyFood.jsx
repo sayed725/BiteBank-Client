@@ -20,47 +20,52 @@ const ManageMyFood = () => {
 
   // delete functionality
   const handleDelete = async id => {
-    // try {
-    //   const { data } = await axios.delete(
-    //     `${import.meta.env.VITE_API_URL}/job/${id}`
-    //   )
-    //   console.log(data)
-    //   toast.success('Data Deleted Successfully!!!')
-    //   fetchAllJobs()
-    // } catch (err) {
-    //   console.log(err)
-    //   toast.error(err.message)
-    // }
+    try {
+       await axios.delete(
+        `${import.meta.env.VITE_API_URL}/delete-food/${id}`
+      )
+      .then(res=>{
+        console.log(res.data)
+        if(res.data.deletedCount){
+          toast.success('Food Data Deleted Successfully!!!')
+          fetchAllFoods()
+        }
+      })
+      
+    } catch (err) {
+      console.log(err)
+      toast.error(err.message)
+    }
   }
 
-  // const modernDelete = id => {
-  //   toast(t => (
-  //     <div className='flex gap-3 items-center'>
-  //       <div>
-  //         <p>
-  //           Are you <b>sure?</b>
-  //         </p>
-  //       </div>
-  //       <div className='gap-2 flex'>
-  //         <button
-  //           className='bg-red-400 text-white px-3 py-1 rounded-md'
-  //           onClick={() => {
-  //             toast.dismiss(t.id)
-  //             handleDelete(id)
-  //           }}
-  //         >
-  //           Yes
-  //         </button>
-  //         <button
-  //           className='bg-green-400 text-white px-3 py-1 rounded-md'
-  //           onClick={() => toast.dismiss(t.id)}
-  //         >
-  //           Cancel
-  //         </button>
-  //       </div>
-  //     </div>
-  //   ))
-  // }
+  const modernDelete = id => {
+    toast(t => (
+      <div className='flex gap-3 items-center'>
+        <div>
+          <p>
+            Are you <b>sure?</b>
+          </p>
+        </div>
+        <div className='gap-2 flex'>
+          <button
+            className='bg-red-400 text-white px-3 py-1 rounded-md'
+            onClick={() => {
+              toast.dismiss(t.id)
+              handleDelete(id)
+            }}
+          >
+            Yes
+          </button>
+          <button
+            className='bg-green-400 text-white px-3 py-1 rounded-md'
+            onClick={() => toast.dismiss(t.id)}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    ))
+  }
 
   return (
     <section className='container px-4 mx-auto pt-12'>
@@ -161,7 +166,7 @@ const ManageMyFood = () => {
                       <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-6'>
                           <Link
-                            to={`/update/${food._id}`}
+                            to={`/update-food/${food._id}`}
                             className='text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'
                           >
                             <svg
@@ -185,7 +190,7 @@ const ManageMyFood = () => {
                         <div className='flex items-center gap-x-6'>
                         <Link>
                         <button
-                            onClick={() => modernDelete(job._id)}
+                            onClick={() => modernDelete(food._id)}
                             className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'
                           >
                             <svg

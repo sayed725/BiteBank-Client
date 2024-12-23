@@ -3,19 +3,14 @@ import Main from '../layouts/Main'
 import Home from '../pages/Home'
 import Login from '../pages/Authentication/Login'
 import Register from '../pages/Authentication/Register'
-
 import ErrorPage from '../pages/ErrorPage'
-
-import UpdateJob from '../pages/UpdateJob'
 import PrivateRoute from './PrivateRoute'
-
-
-
 import AvailableFoods from '../pages/AvailableFoods'
 import AddFood from '../pages/AddFood'
 import FoodDetails from '../pages/FoodDetails'
 import MyFoodRequest from '../pages/MyFoodRequest'
 import ManageMyFood from '../pages/ManageMyFood'
+import UpdateFood from '../pages/UpdateFood'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -47,10 +42,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/update/:id',
+        path: '/update-food/:id',
         element: (
           <PrivateRoute>
-            <UpdateJob />
+            <UpdateFood />
           </PrivateRoute>
         ),
       },
