@@ -9,9 +9,9 @@ const FoodCard = ({ food }) => {
   return (
     <Link
       to={`/food/${_id}`}
-      className="w-full max-w-sm  py-3 bg-white rounded-md hover:scale-[1.05] transition-all"
+      className="w-full py-3 bg-white rounded-md hover:scale-[1.05] transition-all"
     >
-      <div className="max-w-sm rounded-lg shadow-md overflow-hidden bg-white">
+      <div className=" rounded-lg shadow-md overflow-hidden bg-white">
         {/* Image Section */}
         <img src={image} alt="food" className="w-full h-[250px] object-cover" />
 

@@ -1,150 +1,245 @@
-import axios from 'axios'
-import { format } from 'date-fns'
-import { useEffect, useState } from 'react'
-
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-import { useParams } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { format } from "date-fns";
 
 const FoodDetails = () => {
-  const [startDate, setStartDate] = useState(new Date())
-  const { id } = useParams()
-  console.log(id)
-  const [job, setJob] = useState({})
-  // useEffect(() => {
-  //   fetchJobData()
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [id])
-
-  // const fetchJobData = async () => {
-  //   const { data } = await axios.get(
-  //     `${import.meta.env.VITE_API_URL}/job/${id}`
-  //   )
-  //   setJob(data)
-  //   setStartDate(new Date(data.deadline))
-  // }
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [food, setFood] = useState({});
+  const [showModal, setShowModal] = useState(false);
   const {
     title,
+    image,
+    quantity,
     deadline,
-    category,
-    min_price,
-    max_price,
-    description,
+    location,
+    status,
+    notes,
     _id,
-    buyer,
-  } = job || {}
-  console.log(job)
+    donator,
+  } = food || {};
+  const { name, email, photo } = donator || {};
+
+  useEffect(() => {
+    fetchFoodData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
+  const fetchFoodData = async () => {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/food/${id}`
+    );
+    setFood(data);
+    // setStartDate(new Date(data.deadline))
+  };
+
+  const handleRequest = () => {
+    const requestData = {
+      userEmail: "loggedInUser@example.com", // Replace with actual logged-in user email
+      requestDate: new Date(),
+      additionalNotes: notes,
+    };
+
+    axios
+      .put(`/api/food/${id}/request`, requestData)
+      .then(() => {
+        alert("Food requested successfully");
+        setIsModalOpen(false);
+        navigate("/my-requests");
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
-    <div className='flex flex-col md:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto '>
-      {/* Job Details */}
-      <div className='flex-1  px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]'>
-        <div className='flex items-center justify-between'>
-          {deadline && (
-            <span className='text-sm font-light text-gray-800 '>
-              Deadline: {format(new Date(deadline), 'P')}
-            </span>
-          )}
-          <span className='px-4 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full '>
-            {category}
-          </span>
-        </div>
-
-        <div>
-          <h1 className='mt-2 text-3xl font-semibold text-gray-800 '>
-            {title}
-          </h1>
-
-          <p className='mt-2 text-lg text-gray-600 '>{description}</p>
-          <p className='mt-6 text-sm font-bold text-gray-600 '>
-            Buyer Details:
-          </p>
-          <div className='flex items-center gap-5'>
-            <div>
-              <p className='mt-2 text-sm  text-gray-600 '>
-                Name: {buyer?.name}
-              </p>
-              <p className='mt-2 text-sm  text-gray-600 '>
-                Email: {buyer?.email}
-              </p>
-            </div>
-            <div className='rounded-full object-cover overflow-hidden w-14 h-14'>
-              <img src={buyer?.photo} alt='' />
-            </div>
-          </div>
-          <p className='mt-6 text-lg font-bold text-gray-600 '>
-            Range: ${min_price} - ${max_price}
-          </p>
-        </div>
-      </div>
-      {/* Place A Bid Form */}
-      <section className='p-6 w-full  bg-white rounded-md shadow-md flex-1 md:min-h-[350px]'>
-        <h2 className='text-lg font-semibold text-gray-700 capitalize '>
-          Place A Bid
-        </h2>
-
-        <form>
-          <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
-            <div>
-              <label className='text-gray-700 ' htmlFor='price'>
-                Price
-              </label>
-              <input
-                id='price'
-                type='text'
-                name='price'
-                required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-              />
-            </div>
-
-            <div>
-              <label className='text-gray-700 ' htmlFor='emailAddress'>
-                Email Address
-              </label>
-              <input
-                id='emailAddress'
-                type='email'
-                name='email'
-                disabled
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-              />
-            </div>
-
-            <div>
-              <label className='text-gray-700 ' htmlFor='comment'>
-                Comment
-              </label>
-              <input
-                id='comment'
-                name='comment'
-                type='text'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-              />
-            </div>
-            <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700'>Deadline</label>
-
-              {/* Date Picker Input Field */}
-              <DatePicker
-                className='border p-2 rounded-md'
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-              />
-            </div>
+    <div className="container mx-auto bg-white shadow rounded-lg p-4">
+      
+        <div className="flex flex-col md:flex-row items-start gap-10 sm:p-6">
+          {/* Left Section: Image */}
+          <div className="w-full md:w-1/2">
+            <img
+              src={image} // Replace with actual image URL
+              alt="food"
+              className="rounded-md shadow-lg h-[400px] w-full object-cover"
+            />
           </div>
 
-          <div className='flex justify-end mt-6'>
-            <button
-              type='submit'
-              className='px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
-            >
-              Place Bid
+          {/* Right Section: Content */}
+          <div className="w-full md:w-1/2 h-[400px] ">
+            {/* Content Section */}
+            <div className=" flex flex-col justify-between h-full">
+              {/* Title and Favorite Icon */}
+             
+                <h3 className="text-lg mt-2 font-semibold text-gray-800">
+                  {title}
+                </h3>
+                <h3
+                  className={`px-3 py-1 w-[80px] text-center  ${
+                    status === "Available" && "text-green-500 bg-green-100/60"
+                  }  text-xs  rounded-full`}
+                >
+                  {status}
+                </h3>
+              
+              <p className="text-sm text-red-500 font-semibold">
+                Quantity: <span className="text-gray-600">{quantity}</span>
+              </p>
+
+              {/* Cuisine and Location */}
+              <p className="text-sm text-gray-600 font-semibold">
+                    Location: <span className="text-gray-600">{location}</span>
+                  </p>
+
+              {/* Closing Time */}
+
+              <p className="mt-6 text-sm font-bold text-gray-600 ">
+                Donator Details:
+              </p>
+              <div className="flex items-center gap-5">
+                <div className="flex flex-col gap-2">
+                  <p className="text-sm text-gray-600 font-semibold">
+                    Name: <span className="text-gray-600">{name}</span>
+                  </p>
+                  <p className="text-sm text-gray-600 font-semibold">
+                    Email: <span className="text-gray-600">{email}</span>
+                  </p>
+                </div>
+                <div className="rounded-full object-cover overflow-hidden w-14 h-14">
+                  <img referrerPolicy="no-referrer" src={photo} alt="" />
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 font-semibold">
+                Expiry Date: <span className="text-gray-600">{deadline}</span>
+              </p>
+              <p className="text-sm text-gray-600 font-semibold">
+                Notes: <span className="text-gray-600">{notes}</span>
+              </p>
+
+              {/* Price and Distance */}
+              <div className="flex items-center justify-between text-sm text-gray-500">
+                <button onClick={() => document.getElementById("my_modal_3").showModal()}
+                className="w-full px-2 py-3 mt-4 rounded-md text-white font-bold capitalize transition-colors duration-300 transform bg-[#ebb475] hover:text-black focus:outline-none focus:text-black">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      {/* You can open the modal using document.getElementById('ID').showModal() method */}
+      {/* You can open the modal using document.getElementById('ID').showModal() method */}
+      <button
+        className="btn hidden"
+        onClick={() => document.getElementById("my_modal_3").showModal()}
+      >
+        open modal
+      </button>
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box w-11/12 max-w-5xl">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
             </button>
+          </form>
+          <div>
+            <div className="space-y-2">
+              <div>
+                <label>Food Name</label>
+                <input
+                  type="text"
+                  value={food.name}
+                  readOnly
+                  className="input-class"
+                />
+              </div>
+              <div>
+                <label>Food Image</label>
+                <img
+                  src={food.image}
+                  alt={food.name}
+                  className="rounded-lg h-[200px]"
+                />
+              </div>
+              <div>
+                <label>Food ID</label>
+                <input
+                  type="text"
+                  value={id}
+                  readOnly
+                  className="input-class"
+                />
+              </div>
+              <div>
+                <label>Donator Email</label>
+                <input
+                  type="text"
+                  value={food.donatorEmail}
+                  readOnly
+                  className="input-class"
+                />
+              </div>
+              <div>
+                <label>Donator Name</label>
+                <input
+                  type="text"
+                  value={food.donatorName}
+                  readOnly
+                  className="input-class"
+                />
+              </div>
+              <div>
+                <label>User Email</label>
+                <input
+                  type="text"
+                  value="loggedInUser@example.com"
+                  readOnly
+                  className="input-class"
+                />
+              </div>
+              <div>
+                <label>Request Date</label>
+                <input
+                  type="text"
+                  value={new Date().toLocaleString()}
+                  readOnly
+                  className="input-class"
+                />
+              </div>
+              <div>
+                <label>Pickup Location</label>
+                <input
+                  type="text"
+                  value={food.pickupLocation}
+                  readOnly
+                  className="input-class"
+                />
+              </div>
+              <div>
+                <label>Expire Date</label>
+                <input
+                  type="text"
+                  value={new Date(food.expireDate).toLocaleString()}
+                  readOnly
+                  className="input-class"
+                />
+              </div>
+              <div>
+                <label>Additional Notes</label>
+                <textarea className="textarea-class" value={notes} />
+              </div>
+              <button
+                onClick={handleRequest}
+                className="mt-4 px-4 py-2 bg-green-600 text-white rounded"
+              >
+                Request
+              </button>
+            </div>
           </div>
-        </form>
-      </section>
+        </div>
+      </dialog>
     </div>
-  )
-}
+  );
+};
 
-export default FoodDetails
+export default FoodDetails;
