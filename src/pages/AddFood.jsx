@@ -12,7 +12,7 @@ const AddFood = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     const form = e.target
-    const name = form.name.value
+    const title = form.name.value
     const image = form.image.value
     // image must be a url 
     const imageRegex = new RegExp(
@@ -36,7 +36,7 @@ const AddFood = () => {
    
 
     const foodData = {
-      name,
+      title,
       image,
       quantity,
       deadline,
@@ -143,17 +143,15 @@ const AddFood = () => {
               <label className='text-gray-700 ' htmlFor='max_price'>
                 Food Status
               </label>
-             
-               <select
-               id='status'
-               name='status'
-               required
-               className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
-              >
-                <option value='Available'>Available</option>
-                <option value='Not Available'>Not Available</option>
-                <option value='Coming Soon'>Coming Soon</option>
-              </select>
+              <input
+                id='status'
+                name='status'
+                required
+                type='text'
+                defaultValue={'Available'}
+                readOnly
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
             </div>
 
            

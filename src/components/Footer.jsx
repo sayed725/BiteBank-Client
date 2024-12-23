@@ -1,9 +1,9 @@
 import logo from '../assets/images/smalllogo.png'
 const Footer = () => {
   return (
-    <footer className='bg-white shadow-sm'>
+    <footer className='bg-white shadow-sm container mx-auto'>
       <hr />
-      <div className='container px-6 py-8 mx-auto'>
+      <div className=' px-6 py-8 '>
         <div className='flex flex-col items-center text-center'>
           <div className='flex gap-2 items-center'>
             <img className='w-auto h-7' src={logo} alt='' />

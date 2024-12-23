@@ -3,13 +3,13 @@
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 const FoodCard = ({ food }) => {
-  const { name, image, quantity, deadline, location, status, notes, _id, donator } =
+  const { title, image, quantity, deadline, location, status, notes, _id, donator } =
     food || {};
-  const {name:donatorName} = donator || {};
+  const {name} = donator || {};
   return (
     <Link
-      to={`/job/${_id}`}
-      className="w-full max-w-sm px-4 py-3 bg-white rounded-md hover:scale-[1.05] transition-all"
+      to={`/food/${_id}`}
+      className="w-full max-w-sm  py-3 bg-white rounded-md hover:scale-[1.05] transition-all"
     >
       <div className="max-w-sm rounded-lg shadow-md overflow-hidden bg-white">
         {/* Image Section */}
@@ -19,7 +19,7 @@ const FoodCard = ({ food }) => {
         <div className="p-4 flex flex-col gap-2">
           {/* Title and Favorite Icon */}
           <div className="flex items-center justify-between">
-            <h3 className="text-lg mt-2 font-semibold text-gray-800">{name}</h3>
+            <h3 className="text-lg mt-2 font-semibold text-gray-800">{title}</h3>
             <h3
               className={`px-3 py-1  ${
                 status === "Available" && "text-green-500 bg-green-100/60"
@@ -32,7 +32,7 @@ const FoodCard = ({ food }) => {
               {status}
             </h3>
           </div>
-           <p  className="text-sm text-gray-600 font-semibold">Donator: <span className="text-gray-600">{donatorName}</span></p>
+           <p  className="text-sm text-gray-600 font-semibold">Donator: <span className="text-gray-600">{name}</span></p>
           {/* Cuisine and Location */}
           <p className="text-sm text-gray-600">{location}</p>
 
