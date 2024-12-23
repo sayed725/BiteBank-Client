@@ -6,69 +6,69 @@ import { format } from 'date-fns'
 import toast from 'react-hot-toast'
 const ManageMyFood = () => {
   const { user } = useContext(AuthContext)
-  const [jobs, setJobs] = useState([])
-  // useEffect(() => {
-  //   fetchAllJobs()
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [user])
-  // const fetchAllJobs = async () => {
-  //   const { data } = await axios.get(
-  //     `${import.meta.env.VITE_API_URL}/jobs/${user?.email}`
-  //   )
-  //   setJobs(data)
-  // }
+  const [foods, setFoods] = useState([])
+  useEffect(() => {
+    fetchAllFoods()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user])
+  const fetchAllFoods = async () => {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/foods-by-donator/${user?.email}`
+    )
+    setFoods(data)
+  }
 
   // delete functionality
   const handleDelete = async id => {
-    try {
-      const { data } = await axios.delete(
-        `${import.meta.env.VITE_API_URL}/job/${id}`
-      )
-      console.log(data)
-      toast.success('Data Deleted Successfully!!!')
-      fetchAllJobs()
-    } catch (err) {
-      console.log(err)
-      toast.error(err.message)
-    }
+    // try {
+    //   const { data } = await axios.delete(
+    //     `${import.meta.env.VITE_API_URL}/job/${id}`
+    //   )
+    //   console.log(data)
+    //   toast.success('Data Deleted Successfully!!!')
+    //   fetchAllJobs()
+    // } catch (err) {
+    //   console.log(err)
+    //   toast.error(err.message)
+    // }
   }
 
-  const modernDelete = id => {
-    toast(t => (
-      <div className='flex gap-3 items-center'>
-        <div>
-          <p>
-            Are you <b>sure?</b>
-          </p>
-        </div>
-        <div className='gap-2 flex'>
-          <button
-            className='bg-red-400 text-white px-3 py-1 rounded-md'
-            onClick={() => {
-              toast.dismiss(t.id)
-              handleDelete(id)
-            }}
-          >
-            Yes
-          </button>
-          <button
-            className='bg-green-400 text-white px-3 py-1 rounded-md'
-            onClick={() => toast.dismiss(t.id)}
-          >
-            Cancel
-          </button>
-        </div>
-      </div>
-    ))
-  }
+  // const modernDelete = id => {
+  //   toast(t => (
+  //     <div className='flex gap-3 items-center'>
+  //       <div>
+  //         <p>
+  //           Are you <b>sure?</b>
+  //         </p>
+  //       </div>
+  //       <div className='gap-2 flex'>
+  //         <button
+  //           className='bg-red-400 text-white px-3 py-1 rounded-md'
+  //           onClick={() => {
+  //             toast.dismiss(t.id)
+  //             handleDelete(id)
+  //           }}
+  //         >
+  //           Yes
+  //         </button>
+  //         <button
+  //           className='bg-green-400 text-white px-3 py-1 rounded-md'
+  //           onClick={() => toast.dismiss(t.id)}
+  //         >
+  //           Cancel
+  //         </button>
+  //       </div>
+  //     </div>
+  //   ))
+  // }
 
   return (
     <section className='container px-4 mx-auto pt-12'>
       <div className='flex items-center gap-x-3'>
-        <h2 className='text-lg font-medium text-gray-800 '>My Posted Jobs</h2>
+        <h2 className='text-lg font-medium text-gray-800 '>My Posted Foods</h2>
 
         <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
-          {jobs.length} Job
+          {foods.length} Food
         </span>
       </div>
 
@@ -92,7 +92,7 @@ const ManageMyFood = () => {
                       scope='col'
                       className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
-                      <span>Deadline</span>
+                      <span>Expired Date</span>
                     </th>
 
                     <th
@@ -100,7 +100,7 @@ const ManageMyFood = () => {
                       className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
                       <button className='flex items-center gap-x-2'>
-                        <span>Price Range</span>
+                        <span>Quantity</span>
                       </button>
                     </th>
 
@@ -108,60 +108,83 @@ const ManageMyFood = () => {
                       scope='col'
                       className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
-                      Category
+                      Status
                     </th>
                     <th
                       scope='col'
                       className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                     >
-                      Description
+                      Location
                     </th>
 
                     <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
                       Edit
                     </th>
+                    <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                      Delete
+                    </th>
                   </tr>
                 </thead>
                 <tbody className='bg-white divide-y divide-gray-200 '>
                   {/* Generate dynamic tr */}
-                  {jobs.map(job => (
-                    <tr key={job._id}>
+                  {foods.map(food => (
+                    <tr key={food._id}>
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {job.title}
+                        {food.title}
                       </td>
 
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {format(new Date(job.deadline), 'P')}
+                        {format(new Date(food.deadline), 'P')}
                       </td>
 
-                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        ${job.min_price}-${job.max_price}
+                      <td className='px-4 py-4 text-sm text-gray-500   whitespace-nowrap'>
+                        {food.quantity}
                       </td>
                       <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-2'>
                           <p
-                            className={`px-3 py-1  ${
-                              job.category === 'Web Development' &&
-                              'text-blue-500 bg-blue-100/60'
-                            } ${
-                              job.category === 'Graphics Design' &&
-                              'text-green-500 bg-green-100/60'
-                            }
-                            ${
-                              job.category === 'Digital Marketing' &&
-                              'text-red-500 bg-red-100/60'
-                            } text-xs  rounded-full`}
+                           className={`px-3 py-1  ${
+                            food.status === "Available" && "text-green-500 bg-green-100/60"
+                          } ${food.status === "Not Available" && "text-red-500 bg-red-100/60"}
+                                        ${
+                                          food.status === "Coming Soon" &&
+                                          "text-yellow-500 bg-yellow-100/60"
+                                        } text-xs  rounded-full`}
                           >
-                            {job.category}
+                            {food.status}
                           </p>
                         </div>
                       </td>
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {job.description.substring(0, 18)}...
+                        {food.location}
                       </td>
                       <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-6'>
-                          <button
+                          <Link
+                            to={`/update/${food._id}`}
+                            className='text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'
+                          >
+                            <svg
+                              xmlns='http://www.w3.org/2000/svg'
+                              fill='none'
+                              viewBox='0 0 24 24'
+                              strokeWidth='1.5'
+                              stroke='currentColor'
+                              className='w-5 h-5'
+                            >
+                              <path
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                                d='M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10'
+                              />
+                            </svg>
+                          </Link>
+                        </div>
+                      </td>
+                      <td className='px-4 py-4 text-sm whitespace-nowrap'>
+                        <div className='flex items-center gap-x-6'>
+                        <Link>
+                        <button
                             onClick={() => modernDelete(job._id)}
                             className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'
                           >
@@ -180,26 +203,7 @@ const ManageMyFood = () => {
                               />
                             </svg>
                           </button>
-
-                          <Link
-                            to={`/update/${job._id}`}
-                            className='text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'
-                          >
-                            <svg
-                              xmlns='http://www.w3.org/2000/svg'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                              strokeWidth='1.5'
-                              stroke='currentColor'
-                              className='w-5 h-5'
-                            >
-                              <path
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                                d='M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10'
-                              />
-                            </svg>
-                          </Link>
+                        </Link>
                         </div>
                       </td>
                     </tr>
