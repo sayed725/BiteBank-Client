@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+/* eslint-disable react/prop-types */
 import { format } from "date-fns";
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { AuthContext } from "../providers/AuthProvider";
 
 const FoodDetails = () => {
+
   const { id } = useParams();
+  const { user } = useContext(AuthContext)
   const navigate = useNavigate();
   const [food, setFood] = useState({});
+  const [startDate, setStartDate] = useState(new Date())
   const [showModal, setShowModal] = useState(false);
   const {
     title,
@@ -33,6 +40,14 @@ const FoodDetails = () => {
     setFood(data);
     // setStartDate(new Date(data.deadline))
   };
+
+
+  // modal form related function 
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
 
   const handleRequest = () => {
     const requestData = {
@@ -70,7 +85,7 @@ const FoodDetails = () => {
             <div className=" flex flex-col justify-between h-full">
               {/* Title and Favorite Icon */}
              
-                <h3 className="text-lg mt-2 font-semibold text-gray-800">
+                <h3 className="text-lg  font-semibold text-gray-800">
                   {title}
                 </h3>
                 <h3
@@ -109,7 +124,7 @@ const FoodDetails = () => {
                 </div>
               </div>
               <p className="text-sm text-gray-600 font-semibold">
-                Expiry Date: <span className="text-gray-600">{deadline}</span>
+                Expiry Date: <span className="text-gray-600">{deadline ? format(new Date(deadline), 'P') : ''}</span>
               </p>
               <p className="text-sm text-gray-600 font-semibold">
                 Notes: <span className="text-gray-600">{notes}</span>
@@ -119,7 +134,7 @@ const FoodDetails = () => {
               <div className="flex items-center justify-between text-sm text-gray-500">
                 <button onClick={() => document.getElementById("my_modal_3").showModal()}
                 className="w-full px-2 py-3 mt-4 rounded-md text-white font-bold capitalize transition-colors duration-300 transform bg-[#ebb475] hover:text-black focus:outline-none focus:text-black">
-                  View Details
+                  Request
                 </button>
               </div>
             </div>
@@ -142,99 +157,181 @@ const FoodDetails = () => {
               ✕
             </button>
           </form>
-          <div>
-            <div className="space-y-2">
-              <div>
-                <label>Food Name</label>
-                <input
-                  type="text"
-                  value={food.name}
-                  readOnly
-                  className="input-class"
-                />
-              </div>
-              <div>
-                <label>Food Image</label>
-                <img
-                  src={food.image}
-                  alt={food.name}
-                  className="rounded-lg h-[200px]"
-                />
-              </div>
-              <div>
-                <label>Food ID</label>
-                <input
-                  type="text"
-                  value={id}
-                  readOnly
-                  className="input-class"
-                />
-              </div>
-              <div>
-                <label>Donator Email</label>
-                <input
-                  type="text"
-                  value={food.donatorEmail}
-                  readOnly
-                  className="input-class"
-                />
-              </div>
-              <div>
-                <label>Donator Name</label>
-                <input
-                  type="text"
-                  value={food.donatorName}
-                  readOnly
-                  className="input-class"
-                />
-              </div>
-              <div>
-                <label>User Email</label>
-                <input
-                  type="text"
-                  value="loggedInUser@example.com"
-                  readOnly
-                  className="input-class"
-                />
-              </div>
-              <div>
-                <label>Request Date</label>
-                <input
-                  type="text"
-                  value={new Date().toLocaleString()}
-                  readOnly
-                  className="input-class"
-                />
-              </div>
-              <div>
-                <label>Pickup Location</label>
-                <input
-                  type="text"
-                  value={food.pickupLocation}
-                  readOnly
-                  className="input-class"
-                />
-              </div>
-              <div>
-                <label>Expire Date</label>
-                <input
-                  type="text"
-                  value={new Date(food.expireDate).toLocaleString()}
-                  readOnly
-                  className="input-class"
-                />
-              </div>
-              <div>
-                <label>Additional Notes</label>
-                <textarea className="textarea-class" value={notes} />
-              </div>
-              <button
-                onClick={handleRequest}
-                className="mt-4 px-4 py-2 bg-green-600 text-white rounded"
-              >
-                Request
-              </button>
+          {/* modal content text */}
+          <div className="modal-content flex flex-col justify-center items-center p-4">
+          <form className='px-2 w-full' onSubmit={handleSubmit}>
+          <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
+            {/* food name  */}
+            <div>
+              <label className='text-gray-700 ' htmlFor='food_name'>
+                Food Name
+              </label>
+              <input
+                id='name'
+                name='name'
+                type='text'
+                defaultValue={title}
+                readOnly
+                required
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
             </div>
+
+            {/* food image */}
+
+            <div>
+              <label className='text-gray-700 ' htmlFor='emailAddress'>
+                Food Image Url
+              </label>
+              <input
+                id='food_image'
+                type='text'
+                name='image'
+                defaultValue={image}
+                readOnly
+                required
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div>
+
+            {/* food id  */}
+            <div>
+              <label className='text-gray-700 ' htmlFor='_id'>
+                Food ID
+              </label>
+              <input
+                id='food_id'
+                type='text'
+                name='image'
+                defaultValue={_id}
+                readOnly
+                required
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div>
+            {/* donator email  */}
+            <div>
+              <label className='text-gray-700 ' htmlFor='emailAddress'>
+                Food Donator Email
+              </label>
+              <input
+                id='email'
+                type='email'
+                name='email'
+                defaultValue={email}
+                readOnly
+                required
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div>
+            {/* donator name  */}
+            <div>
+              <label className='text-gray-700 ' htmlFor='name'>
+                Food Donator Name
+              </label>
+              <input
+                id='name'
+                type='text'
+                name='name'
+                defaultValue={name}
+                readOnly
+                required
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div>
+            {/* current user email  */}
+            <div>
+              <label className='text-gray-700 ' htmlFor='name'>
+                Current User Email
+              </label>
+              <input
+                id='user email'
+                type='email'
+                name='user-email'
+                defaultValue={user?.email}
+                readOnly
+                required
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div>
+            {/* request date  */}
+            <div className='flex flex-col gap-2 '>
+              <label className='text-gray-700'>Request Date</label>
+
+              {/* Date Picker Input Field */}
+              <DatePicker
+                className='border p-2 w-full rounded-md'
+                selected={startDate}
+                required
+                readOnly
+                onChange={date => setStartDate(date)}
+              />
+            </div>
+             {/* expired date */}
+             <div>
+              <label className='text-gray-700'>Expired Date</label>
+              <input
+                id='deadline'
+                name='deadline'
+                readOnly
+                defaultValue={deadline ? format(new Date(deadline), 'P') : ''}
+                required
+                type='text'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div>
+           
+            {/* food location  */}
+            <div className="col-span-2">
+              <label className='text-gray-700 ' htmlFor='location'>
+                Pickup Location
+              </label>
+              <input
+                id='location'
+                name='location'
+                readOnly
+                defaultValue={location}
+                required
+                type='text'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div>
+           {/* notes 
+            <div>
+              <label className='text-gray-700 ' htmlFor='status'>
+                Food Status
+              </label>
+              <input
+                id='status'
+                name='status'
+                required
+                type='text'
+                defaultValue={'Available'}
+                readOnly
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div> */}
+
+           
+          </div>
+          <div className='flex flex-col gap-2 mt-4'>
+            <label className='text-gray-700 ' htmlFor='notes'>
+              Additional Notes
+            </label>
+            <textarea
+              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              name='notes'
+              id='notes'
+              defaultValue={notes}
+              required
+            ></textarea>
+          </div>
+          <div className='flex justify-end mt-10'>
+            <button className=' px-8 py-2.5 w-full leading-5 text-white transition-colors duration-300 transhtmlForm bg-[#ebb475] rounded-md hover:text-black focus:outline-none focus:text-black'>
+              Request
+            </button>
+          </div>
+        </form>
           </div>
         </div>
       </dialog>

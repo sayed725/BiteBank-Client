@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import FoodCard from '../components/FoodCard';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const FeaturedFood = () => {
     const [foods, setFoods] = useState([])
@@ -24,6 +25,9 @@ const FeaturedFood = () => {
           {foods.map(food => (
             < FoodCard key={food._id} food={food} />
           ))}
+        </div>
+        <div className='flex justify-center mt-8'>
+            <Link to={'/foods'}><button className="w-full px-5 py-3 mt-4 rounded-md text-sm text-white font-bold capitalize transition-colors duration-300 transform bg-[#ebb475] hover:text-black focus:outline-none focus:text-black">Show All Food</button></Link>
         </div>
 
         </div>
