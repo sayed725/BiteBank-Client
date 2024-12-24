@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const FoodDetails = () => {
 
@@ -14,7 +15,6 @@ const FoodDetails = () => {
   const navigate = useNavigate();
   const [food, setFood] = useState({});
   const [startDate, setStartDate] = useState(new Date())
-  const [showModal, setShowModal] = useState(false);
   const {
     title,
     image,
@@ -44,27 +44,73 @@ const FoodDetails = () => {
 
   // modal form related function 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
+    // user cheek 
+
+    if(email === user?.email){
+      return toast.error('You can not request your own food')
+    }
+
+
+
+    const form = e.target
+    const title = form.name.value
+    const image = form.image.value
+
+    const quantity = form.quantity.value
+    const location = form.location.value
+    const deadline = form.deadline.value
+    const reqDate = startDate
+    const foodId = form.id.value
+    const status = "Requested"
+    const notes = form.notes.value
+   
+
+    const requestData = {
+      title,
+      image,
+      quantity,
+      location,
+      deadline,
+      reqDate,
+      status,
+      notes,
+      foodId,
+      donator: {
+        email: email,
+        name: name,
+        photo: photo,
+      },
+      reqUser: {
+        email: user?.email,
+        name: user?.displayName,
+        photo: user?.photoURL,
+      },
+     
+    }
+    console.log(requestData)
+    // document.getElementById("my_modal_3").close()
+    try {
+      // 1. make a post request
+      await axios.post(`${import.meta.env.VITE_API_URL}/add-request`, requestData)
+      .then(res=>{
+        // console.log(res.data)
+        if(res.data.insertedId){
+          toast.success('Food Request  Added Successfully!!')
+          // form.reset()
+          navigate('/my-food-requests')
+        }
+      })
+    } catch (err) {
+      // console.log(err)
+      toast.error(err.message)
+    }
   }
 
 
-  const handleRequest = () => {
-    const requestData = {
-      userEmail: "loggedInUser@example.com", // Replace with actual logged-in user email
-      requestDate: new Date(),
-      additionalNotes: notes,
-    };
-
-    axios
-      .put(`/api/food/${id}/request`, requestData)
-      .then(() => {
-        alert("Food requested successfully");
-        setIsModalOpen(false);
-        navigate("/my-requests");
-      })
-      .catch((error) => console.error(error));
-  };
+  
+  
 
   return (
     <div className="container mx-auto bg-white shadow rounded-lg p-4">
@@ -202,7 +248,7 @@ const FoodDetails = () => {
               <input
                 id='food_id'
                 type='text'
-                name='image'
+                name='id'
                 defaultValue={_id}
                 readOnly
                 required
@@ -230,9 +276,9 @@ const FoodDetails = () => {
                 Food Donator Name
               </label>
               <input
-                id='name'
+                id='donatorName'
                 type='text'
-                name='name'
+                name='donatorName'
                 defaultValue={name}
                 readOnly
                 required
@@ -282,7 +328,7 @@ const FoodDetails = () => {
             </div>
            
             {/* food location  */}
-            <div className="col-span-2">
+            <div className="">
               <label className='text-gray-700 ' htmlFor='location'>
                 Pickup Location
               </label>
@@ -291,6 +337,22 @@ const FoodDetails = () => {
                 name='location'
                 readOnly
                 defaultValue={location}
+                required
+                type='text'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              />
+            </div>
+           
+            {/* quantity  */}
+            <div className="">
+              <label className='text-gray-700 ' htmlFor='quantity'>
+                Quantity
+              </label>
+              <input
+                id='quantity'
+                name='quantity'
+                readOnly
+                defaultValue={quantity}
                 required
                 type='text'
                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'

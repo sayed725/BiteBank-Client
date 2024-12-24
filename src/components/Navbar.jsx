@@ -56,7 +56,7 @@ const Navbar = () => {
                 <Link to='/my-posted-food'>ManageMyFood</Link>
               </li>
               <li>
-                <Link to='/food-requests'>My Food Request</Link>
+                <Link to='/my-food-requests'>My Food Request</Link>
               </li>
               <li className='mt-2'>
                 <button
