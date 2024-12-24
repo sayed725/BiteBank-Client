@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import bgImg from '../../assets/images/register.jpg'
+import bgImg from '../../assets/images/register.avif'
 import logo from '../../assets/images/smalllogo.png'
 import { useContext } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'

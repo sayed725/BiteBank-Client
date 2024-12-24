@@ -98,6 +98,7 @@ const FoodDetails = () => {
         // console.log(res.data)
         if(res.data.insertedId){
           toast.success('Food Request  Added Successfully!!')
+           document.getElementById("my_modal_3").close()
           // form.reset()
           navigate('/my-food-requests')
         }

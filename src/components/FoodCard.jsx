@@ -7,8 +7,8 @@ const FoodCard = ({ food }) => {
     food || {};
   const {name} = donator || {};
   return (
-    <Link
-      to={`/food/${_id}`}
+    <div
+      
       className="w-full py-3 bg-white rounded-md hover:scale-[1.05] transition-all"
     >
       <div className=" rounded-lg shadow-md overflow-hidden bg-white">
@@ -34,7 +34,7 @@ const FoodCard = ({ food }) => {
           </div>
            <p  className="text-sm text-gray-600 font-semibold">Donator: <span className="text-gray-600">{name}</span></p>
           {/* Cuisine and Location */}
-          <p className="text-sm text-gray-600">{location}</p>
+          <p className="text-sm text-gray-600 font-semibold">Location: <span className="text-gray-600">{location}</span></p>
 
           {/* Closing Time */}
           
@@ -43,11 +43,11 @@ const FoodCard = ({ food }) => {
 
           {/* Price and Distance */}
           <div className="flex items-center justify-between text-sm text-gray-500">
-            <button className="w-full px-2 py-3 mt-4 rounded-md text-white font-bold capitalize transition-colors duration-300 transform bg-[#ebb475] hover:text-black focus:outline-none focus:text-black">View Details</button>
+            <Link to={`/food/${_id}`} className="w-full px-2 py-3 mt-4 text-center rounded-md text-white font-bold capitalize transition-colors duration-300 transform bg-[#ebb475] hover:text-black focus:outline-none focus:text-black">View Details</Link>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

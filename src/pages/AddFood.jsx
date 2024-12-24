@@ -59,7 +59,7 @@ const AddFood = () => {
         if(res.data.insertedId){
           toast.success('Food Added Successfully!!')
           form.reset()
-          // navigate('/my-posted-jobs')
+          navigate('/my-posted-food')
         }
       })
     } catch (err) {
