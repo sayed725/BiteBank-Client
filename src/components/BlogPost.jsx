@@ -1,29 +1,41 @@
 import React from "react";
 import { FaCalendarAlt, FaCommentDots } from "react-icons/fa";
+import { Swiper, SwiperSlide} from "swiper/react";
+
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
 
 import blogImg1 from '../assets/images/blog1.jpg'
 import blogimg2 from '../assets/images/blog2.jpeg'
 import blogimg3 from '../assets/images/blog3.jpg'
+import blogImg4 from '../assets/images/blog4.jpg'
+import blogimg5 from '../assets/images/blog5.jpg'
+import blogimg6 from '../assets/images/blog6.jpg'
 
 
 const BlogPost = () => {
   const posts = [
+    // 1 blog post
     {
       image: blogImg1, 
-      title: "5 SIMPLE & HEALTHY GLUTEN FREE COOKIE RECIPES",
+      title: "5 SIMPLE & HEALTHY COOKIE RECIPES",
       description:
         "Here are 5 simple & healthy gluten-free cookie recipes: Almond Flour Chocolate Chip, Peanut Butter Oatmeal, Coconut Macaroons, Banana Oat, and Pumpkin Spice Cookies 🍪",
-      date: "Dec 05 2024",
+      date: "Dec 24 2024",
       comments: "23 Comments",
     },
+    // 2 blog post
     {
       image: blogimg2, 
       title: "6 Tip to Make Paleo Eating Easy",
       description:
         "Here are 6 tips to make Paleo eating easy: focus on whole foods, plan your meals, keep snacks handy, try new recipes, prep in advance, and stay hydrated. 🥗🍖",
-      date: "Dec 08 2024",
+      date: "Dec 23 2024",
       comments: "12 Comments",
     },
+    // 3 blog post
     {
       image: blogimg3,
       title: "5 Foods That Sound Healthy But Aren’t", 
@@ -31,6 +43,33 @@ const BlogPost = () => {
         "Here are 5 foods that sound healthy but aren’t: granola bars, flavored yogurt, veggie chips, fruit smoothies, and gluten-free snacks. 🍫🥤",
       date: "Dec 10 2024",
       comments: "56 Comments",
+    },
+    // 4 blog post
+    {
+      image: blogImg4,
+      title: "Food Pairings That Will Surprise You", 
+      description:
+        "Here are Food Pairings That Will Surprise You: chocolate and avocado, strawberries and balsamic vinegar, watermelon and feta, bacon and maple syrup, and mango and chili. 🍓🍉",
+      date: "Dec 15 2024",
+      comments: "16 Comments",
+    },
+    // 5 blog post
+    {
+      image: blogimg5,
+      title: "Seasonal Recipes to Try This Month", 
+      description:
+        "Here are Seasonal Recipes to Try This Month: hearty beef stew, roasted Brussels sprouts, cranberry walnut bread, spiced hot chocolate, and pumpkin cheesecake. 🍁🍲",
+      date: "Dec 17 2024",
+      comments: "39 Comments",
+    },
+    // 6 blog post
+    {
+      image: blogimg6,
+      title: "5-Minute Healthy Snack Ideas", 
+      description:
+        "Here are 5-minute healthy snack ideas: apple slices with almond butter, Greek yogurt with berries, trail mix, avocado toast, and rice cakes with hummus. 🥑🍎",
+      date: "Dec 22 2024",
+      comments: "11 Comments",
     },
   ];
 
@@ -42,22 +81,47 @@ const BlogPost = () => {
           Check our recent articles, what we are talking about and what you can
         </p>
       </div>
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <Swiper  slidesPerView={3}
+        spaceBetween={20}
+        breakpoints={{
+            200: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+          }}
+        autoplay={{
+          delay: 1000,
+          disableOnInteraction: false,
+        }}
+        speed={2000}
+        modules={[Autoplay]}
+        className="container mx-auto">
+
+
+     
+      
         {posts.map((post, index) => (
-          <div
+          <SwiperSlide
             key={index}
             className="bg-white shadow-lg rounded-lg overflow-hidden"
           >
             <img
               src={post.image}
               alt={post.title}
-              className="w-full h-48 object-cover hover:scale-[1.05] transition-all"
+              className="w-full h-[200px] object-cover hover:scale-[1.05] transition-all"
             />
-            <div className="p-4">
+            <div className="p-4 h-[200px] flex flex-col justify-between">
               <h3 className="text-lg font-semibold text-gray-800">
                 {post.title}
               </h3>
-              <a href=""></a>
               <p className="text-sm text-gray-600 mt-2">
                 {post.description}...{" "}
                 <a
@@ -80,9 +144,10 @@ const BlogPost = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
+         </Swiper>
+      
     </div>
   );
 };

@@ -36,7 +36,7 @@ const ErrorPage = () => {
 
             <Link
               to='/'
-              className='w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-gray-500 rounded-lg shrink-0 sm:w-auto hover:bg-gray-600'
+              className='w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-[#ebb475] rounded-lg shrink-0 sm:w-auto hover:bg-[#ebb475] hover:text-black'
             >
               Take me home
             </Link>
@@ -45,8 +45,8 @@ const ErrorPage = () => {
 
         <div className='relative w-full mt-8 lg:w-1/2 lg:mt-0'>
           <img
-            className=' w-full lg:h-[32rem] h-80 md:h-96 rounded-lg object-cover '
-            src='https://images.unsplash.com/photo-1613310023042-ad79320c00ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
+            className=' w-full lg:h-[32rem] h-80 md:h-96 rounded-lg object-cover'
+            src='https://images.unsplash.com/photo-1532980400857-e8d9d275d858?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
             alt=''
           />
         </div>

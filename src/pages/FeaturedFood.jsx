@@ -2,17 +2,27 @@ import React, { useEffect, useState } from 'react';
 import FoodCard from '../components/FoodCard';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const FeaturedFood = () => {
-    const [foods, setFoods] = useState([])
-    useEffect(() => {
-      fetchAllJobs()
-    }, [])
+    // const [foods, setFoods] = useState([])
+    // useEffect(() => {
+    //   fetchAllJobs()
+    // }, [])
   
-    const fetchAllJobs = async () => {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/foods`)
-      setFoods(data)
-    }
+    // const fetchAllJobs = async () => {
+    //   const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/foods`)
+    //   setFoods(data)
+    // }
+
+    const { data:foods , isLoading} = useQuery({ queryKey:['foods'], queryFn: async ()=>{
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/foods`) 
+        return data 
+    }})
+    // console.log(foods, isLoading)
+
+    if(isLoading) return <LoadingSpinner></LoadingSpinner>
 
 
     return (

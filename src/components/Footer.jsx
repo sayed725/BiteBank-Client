@@ -60,7 +60,7 @@ const Footer = () => {
         <div className='flex justify-center items-center mt-6'>
           <h2 className='border-r-2 pr-4 border-[#ebb475]'>Address: 60 Wall Street, New York, NY  10018 US</h2>
           <h2 className='border-r-2 pl-4 pr-4 border-[#ebb475]'>Phone: 1-800-123-4567</h2>
-          <h2 className='pl-4'>Opening Hours: Mon – Sat: 8:00 – 20:00</h2>
+          <h2 className='pl-4'>Active Hours: Mon – Sat: 8:00 – 20:00</h2>
         </div>
 
         <hr className='my-6 border-gray-200 md:my-10 ' />

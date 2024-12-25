@@ -4,7 +4,9 @@ import { AuthContext } from '../providers/AuthProvider'
 import axios from 'axios'
 import { format } from 'date-fns'
 import toast from 'react-hot-toast'
+import useAxiosSecure from '../Hooks/useAxiosSecure'
 const ManageMyFood = () => {
+  const axiosSecure = useAxiosSecure()
   const { user } = useContext(AuthContext)
   const [foods, setFoods] = useState([])
   useEffect(() => {
@@ -12,8 +14,8 @@ const ManageMyFood = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
   const fetchAllFoods = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/foods-by-donator/${user?.email}`
+    const { data } = await axiosSecure.get(
+      `/foods-by-donator/${user?.email}`
     )
     setFoods(data)
   }
@@ -152,7 +154,7 @@ const ManageMyFood = () => {
                             food.status === "Available" && "text-green-500 bg-green-100/60"
                           } ${food.status === "Not Available" && "text-red-500 bg-red-100/60"}
                                         ${
-                                          food.status === "Coming Soon" &&
+                                          food.status === "Requested" &&
                                           "text-yellow-500 bg-yellow-100/60"
                                         } text-xs  rounded-full`}
                           >

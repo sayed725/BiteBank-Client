@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { AuthContext } from '../providers/AuthProvider'
-import axios from 'axios'
 import { format } from 'date-fns'
-import toast from 'react-hot-toast'
+import useAxiosSecure from '../Hooks/useAxiosSecure'
+
 const MyFoodRequest = () => {
+  const axiosSecure = useAxiosSecure()
   const { user } = useContext(AuthContext)
   const [foods, setFoods] = useState([])
 
@@ -13,8 +13,8 @@ const MyFoodRequest = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
   const fetchAllFoods = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/request-by/${user?.email}`
+    const { data } = await axiosSecure.get(
+      `/request-by/${user?.email}`
     )
     setFoods(data)
   }

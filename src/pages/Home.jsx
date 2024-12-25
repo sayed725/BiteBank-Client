@@ -1,7 +1,6 @@
 import BlogPost from '../components/BlogPost'
 import Carousel from '../components/Carousel'
-import StatsSection from '../components/StatusSection'
-import AvailableFoods from './AvailableFoods'
+import ReviewSection from '../components/ReviewSection'
 import FeaturedFood from './FeaturedFood'
 
 const Home = () => {
@@ -10,9 +9,10 @@ const Home = () => {
       <Carousel />
       <FeaturedFood />
       <div className='py-[50px]'>
-      <StatsSection />
+      <ReviewSection/>
       </div>
       <BlogPost />
+      
     </div>
   )
 }
