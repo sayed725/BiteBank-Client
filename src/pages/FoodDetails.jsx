@@ -114,7 +114,7 @@ const FoodDetails = () => {
   
 
   return (
-    <div className="container mx-auto bg-white shadow rounded-lg p-4">
+    <div className="lg:container mx-auto bg-white shadow rounded-lg p-4">
       
         <div className="flex flex-col md:flex-row items-start gap-10 sm:p-6">
           {/* Left Section: Image */}

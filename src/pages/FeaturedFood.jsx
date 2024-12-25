@@ -26,7 +26,7 @@ const FeaturedFood = () => {
 
 
     return (
-        <div className='px-2 lg:px-5 container mx-auto'>
+        <div className='px-2 lg:px-5 lg:container mx-auto'>
             <div className="text-center mb-8 flex flex-col gap-6 ">
         <h2 className="text-2xl font-bold text-gray-800">Explore Our Top Foods</h2>
         <p className="text-gray-600">Check our latest food, details and what order more</p>

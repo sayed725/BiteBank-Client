@@ -1,7 +1,7 @@
 import logo from '../assets/images/smalllogo.png'
 const Footer = () => {
   return (
-    <footer className='bg-white shadow-sm container mx-auto'>
+    <footer className='bg-white shadow-sm lg:container mx-auto'>
       <hr />
       <div className=' px-6 py-8 '>
         <div className='flex flex-col items-center text-center'>

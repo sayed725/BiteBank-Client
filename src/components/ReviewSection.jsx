@@ -41,12 +41,12 @@ const testimonials = [
 
 const ReviewSection = () => {
   return (
-    <div className="bg-[#ebb475] text-white py-10 lg:px-[200px] rounded-md container mx-auto">
+    <div className="bg-[#ebb475] text-white py-10 lg:px-[200px] rounded-md lg:container mx-auto">
       <div className="">
         {/* Section Header */}
       <div className="flex flex-col gap-5 pb-10 mb-10 justify-center items-center">
      
-        <h2 className="text-4xl font-bold">What our Customers say</h2>
+        <h2 className="text-4xl font-bold px-2 text-center">What our Customers say</h2>
 
       </div>
         {/* Swiper Slider */}
