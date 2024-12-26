@@ -144,7 +144,7 @@ const Login = () => {
                 type='submit'
                 className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#ebb475] rounded-lg hover:bg-[#ebb475] hover:text-black focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
               >
-                Sign In
+                Log In
               </button>
             </div>
           </form>
@@ -154,9 +154,9 @@ const Login = () => {
 
             <Link
               to='/registration'
-              className='text-xs text-gray-500 uppercase  hover:underline'
+              className='text-xs text-blue-500 uppercase  hover:underline'
             >
-              or sign up
+              or Register
             </Link>
 
             <span className='w-1/5 border-b  md:w-1/4'></span>

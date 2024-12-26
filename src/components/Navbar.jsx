@@ -17,12 +17,12 @@ const Navbar = () => {
     <div className='navbar bg-base-100 shadow-sm lg:container px-4 mx-auto'>
       <div className='flex-1'>
         <Link to='/' className='flex gap-2 items-center'>
-          <img className='w-auto h-7' src={logo} alt='' />
-          <span className='font-bold'>Bite Bank</span>
+          <img className='w-auto h-7' src={logo} alt='logo' />
+          <p className='font-bold hidden sm:block'>Bite Bank</p>
         </Link>
       </div>
       <div className='flex-none'>
-        <ul className='menu menu-horizontal px-1 font-bold'>
+        <ul className='menu menu-horizontal sm:px-1 font-bold'>
           <li>
             <NavLink   to='/'>Home</NavLink>
           </li>
@@ -31,8 +31,13 @@ const Navbar = () => {
           </li>
 
           {!user && (
-            <li>
+            <li className='hidden sm:block'>
               <NavLink   to='/login'>Login</NavLink>
+            </li>
+          )}
+          {!user && (
+            <li >
+              <NavLink   to='/registration'>Register</NavLink>
             </li>
           )}
         </ul>
