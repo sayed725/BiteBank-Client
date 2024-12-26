@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const FoodDetails = () => {
 
@@ -89,7 +90,7 @@ const FoodDetails = () => {
       },
      
     }
-    console.log(requestData)
+    // console.log(requestData)
     // document.getElementById("my_modal_3").close()
     try {
       // 1. make a post request
@@ -115,6 +116,7 @@ const FoodDetails = () => {
 
   return (
     <div className="lg:container mx-auto bg-white shadow rounded-lg p-4">
+      <Helmet> <title>Bite Bank | Food Details </title></Helmet>
       
         <div className="flex flex-col md:flex-row items-start gap-10 sm:p-6">
           {/* Left Section: Image */}

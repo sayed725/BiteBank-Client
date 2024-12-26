@@ -8,7 +8,7 @@ Welcome to this project.This is a user-friendly food sharing website where there
 
 
 
-- live link:   [https://assignment-10-b0e3a.web.app/) 
+- live link:   [https://a-11-bite-bank.firebaseapp.com/) 
 
 - Required PDF Link:   [https://drive.google.com/file/d/1mVlCHLtUjccfoKTJd5Y-Qgbm9-n-anOp/view?usp=sharing) 
 

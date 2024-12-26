@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import FoodCard from '../components/FoodCard'
+import { Helmet } from 'react-helmet-async'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const AvailableFoods = () => {
   const [foods, setFoods] = useState([])
@@ -19,7 +21,8 @@ const AvailableFoods = () => {
     }
     fetchAllFoods()
   }, [search, sort])
-  console.log(foods,search,sort)
+  // console.log(foods,search,sort)
+
 
   const handleReset = () => {
     setSearch('')
@@ -27,6 +30,7 @@ const AvailableFoods = () => {
   }
   return (
     <div className='lg:container px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between'>
+      <Helmet> <title>Bite Bank | Available Food </title></Helmet>
       <div>
         <div className='flex flex-col md:flex-row justify-center items-center gap-5 '>
 

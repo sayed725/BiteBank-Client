@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../providers/AuthProvider'
 import { format } from 'date-fns'
 import useAxiosSecure from '../Hooks/useAxiosSecure'
+import { Helmet } from 'react-helmet-async'
 
 const MyFoodRequest = () => {
   const axiosSecure = useAxiosSecure()
@@ -21,9 +22,9 @@ const MyFoodRequest = () => {
 
 
   
-
   return (
     <section className='lg:container px-4 mx-auto pt-12'>
+      <Helmet> <title>Bite Bank | My Food Request </title></Helmet>
       <div className='flex items-center gap-x-3'>
         <h2 className='text-lg font-medium text-gray-800 '>My Food Request</h2>
 

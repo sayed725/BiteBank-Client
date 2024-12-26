@@ -4,6 +4,7 @@ import logo from '../../assets/images/smalllogo.png'
 import { useContext } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
+import { Helmet } from 'react-helmet-async'
 
 const Registration = () => {
   const navigate = useNavigate()
@@ -55,16 +56,16 @@ const Registration = () => {
       toast.error(err?.message)
     }
   }
-
   return (
     <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
+      <Helmet> <title>Bite Bank | Register </title></Helmet>
       <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
         <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
           <div className='flex justify-center mx-auto'>
             <img className='w-auto h-7 sm:h-8' src={logo} alt='' />
           </div>
 
-          <p className='mt-3 text-xl text-center text-gray-600 '>
+          <p className='mt-3 text-xl text-center text-gray-600 animate__animated animate__fadeInLeft'>
             Get Your Free Account Now.
           </p>
 
@@ -179,7 +180,7 @@ const Registration = () => {
             <div className='mt-6'>
               <button
                 type='submit'
-                className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
+                className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#ebb475] rounded-lg hover:bg-[#ebb475] hover:text-black focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
               >
                 Sign Up
               </button>

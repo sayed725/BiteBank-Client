@@ -5,6 +5,7 @@ import axios from 'axios'
 import { format } from 'date-fns'
 import toast from 'react-hot-toast'
 import useAxiosSecure from '../Hooks/useAxiosSecure'
+import { Helmet } from 'react-helmet-async'
 const ManageMyFood = () => {
   const axiosSecure = useAxiosSecure()
   const { user } = useContext(AuthContext)
@@ -27,7 +28,7 @@ const ManageMyFood = () => {
         `${import.meta.env.VITE_API_URL}/delete-food/${id}`
       )
       .then(res=>{
-        console.log(res.data)
+        // console.log(res.data)
         if(res.data.deletedCount){
           toast.success('Food Data Deleted Successfully!!!')
           fetchAllFoods()
@@ -35,7 +36,7 @@ const ManageMyFood = () => {
       })
       
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err.message)
     }
   }
@@ -68,9 +69,9 @@ const ManageMyFood = () => {
       </div>
     ))
   }
-
   return (
     <section className='lg:container px-4 mx-auto pt-12'>
+      <Helmet> <title>Bite Bank | Manage Food </title></Helmet>
       <div className='flex items-center gap-x-3'>
         <h2 className='text-lg font-medium text-gray-800 '>My Posted Foods</h2>
 

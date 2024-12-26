@@ -76,7 +76,7 @@ const BlogPost = () => {
   return (
     <div className="py-10 bg-gray-50 container mx-auto">
       <div className="text-center mb-8 flex flex-col gap-6 ">
-        <h2 className="text-2xl font-bold text-gray-800">Our Latest Blog Posts</h2>
+        <h2 className="text-3xl font-bold text-gray-800">Our Latest Blog Posts</h2>
         <p className="text-gray-600">
           Check our recent articles, what we are talking about and what you can
         </p>

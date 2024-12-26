@@ -1,9 +1,18 @@
 import { useContext } from 'react'
 import logo from '../assets/images/smalllogo.png'
 import { AuthContext } from '../providers/AuthProvider'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
+
+  const links = (
+    <>
+
+
+    </>
+  )
+
+  
   return (
     <div className='navbar bg-base-100 shadow-sm lg:container px-4 mx-auto'>
       <div className='flex-1'>
@@ -13,17 +22,17 @@ const Navbar = () => {
         </Link>
       </div>
       <div className='flex-none'>
-        <ul className='menu menu-horizontal px-1'>
+        <ul className='menu menu-horizontal px-1 font-bold'>
           <li>
-            <Link to='/'>Home</Link>
+            <NavLink   to='/'>Home</NavLink>
           </li>
           <li>
-            <Link to='/foods'>AvailableFoods</Link>
+            <NavLink   to='/foods'>AvailableFoods</NavLink>
           </li>
 
           {!user && (
             <li>
-              <Link to='/login'>Login</Link>
+              <NavLink   to='/login'>Login</NavLink>
             </li>
           )}
         </ul>
@@ -45,18 +54,18 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
+              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold'
             >
               <li>
-                <Link to='/add-food' className='justify-between'>
+                <NavLink to='/add-food' className='justify-between'>
                   Add a Food
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to='/my-posted-food'>ManageMyFood</Link>
+                <NavLink to='/my-posted-food'>ManageMyFood</NavLink>
               </li>
               <li>
-                <Link to='/my-food-requests'>My Food Request</Link>
+                <NavLink to='/my-food-requests'>My Food Request</NavLink>
               </li>
               <li className='mt-2'>
                 <button

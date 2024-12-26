@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async';
 const UpdateFood = () => {
   const navigate = useNavigate()
   const { user } = useContext(AuthContext)
@@ -82,11 +83,11 @@ const UpdateFood = () => {
             // console.log(res.data)
             if(res.data.modifiedCount > 0){
               toast.success('Food Data Updated Successfully!!')
-              // navigate('/my-posted-jobs')
+              navigate('/my-posted-food')
             }
           })
       } catch (err) {
-        console.log(err)
+        // console.log(err)
         toast.error(err.message)
       }
     
@@ -94,6 +95,7 @@ const UpdateFood = () => {
 
   return (
     <div className='lg:w-2/4 mx-auto flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
+        <Helmet> <title>Bite Bank | Update Food </title></Helmet>
       <section className='w-full py-10 md:p-6 mx-auto bg-white rounded-md shadow-md '>
         <h2 className='text-center text-2xl font-semibold text-gray-700 capitalize '>
           Add a Food
