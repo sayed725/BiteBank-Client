@@ -19,7 +19,7 @@ const Slide = ({ image, text ,link , linkText }) => {
           <Link
             to= {link}
             className='w-full px-5 py-4 mt-4 text-white font-bold capitalize transition-colors duration-300 transform bg-[#ebb475] rounded-md lg:w-auto
-             hover:bg-slate-200 hover:text-[#ebb475] hover:border-4 hover:border-[#ebb475] focus:outline-none focus:bg-white animate__flash animate__animated'
+             hover:bg-[#ebb475] hover:text-black focus:outline-none focus:bg-white animate__flash animate__animated'
           >
             {linkText}
           </Link>

@@ -12,6 +12,7 @@ import MyFoodRequest from '../pages/MyFoodRequest'
 
 import ManageMyFood from '../pages/ManageMyFood'
 import UpdateFood from '../pages/UpdateFood'
+import Contact from '../components/Contact'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path:'/contact',
+        element:<Contact></Contact>
+      }
     ],
   },
 ])
