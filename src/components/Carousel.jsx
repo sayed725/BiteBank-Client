@@ -16,7 +16,7 @@ import bgimg3 from '../assets/images/banner3.jpg'
 
 export default function Carousel() {
   return (
-    <div className='lg:container px-2 mx-auto'>
+    <div className='lg:container  mx-auto'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

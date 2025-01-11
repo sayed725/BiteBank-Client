@@ -103,7 +103,7 @@ const BlogPost = () => {
         }}
         speed={2000}
         modules={[Autoplay]}
-        className="container mx-auto">
+        className="container mx-auto w-11/12 sm:w-full">
 
 
      
@@ -118,7 +118,7 @@ const BlogPost = () => {
               alt={post.title}
               className="w-full h-[200px] object-cover hover:scale-[1.05] transition-all"
             />
-            <div className="p-4 h-[200px] flex flex-col justify-between">
+            <div className="p-2 h-[200px] flex flex-col mt-5 justify-between">
               <h3 className="text-lg font-semibold text-gray-800">
                 {post.title}
               </h3>

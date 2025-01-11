@@ -19,7 +19,7 @@ const PopularFoods = () => {
     return (
        <Link to={'/foods'} >
         
-        <div className="bg-white container mx-auto">
+        <div className="bg-white container mx-auto w-11/12 sm:w-full">
        <div className='flex flex-col gap-5'>    
            <h2 className='text-3xl text-center font-bold animate__slideInRight animate__animated'>Explore Some Popular Categories</h2>
            </div>

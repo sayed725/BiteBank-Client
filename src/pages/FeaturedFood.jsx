@@ -26,7 +26,7 @@ const FeaturedFood = () => {
 
 
     return (
-        <div className='container mx-auto py-10'>
+        <div className='container mx-auto py-10 w-11/12 sm:w-full'>
             <div className="text-center mb-8 flex flex-col gap-6 ">
         <h2 className="text-3xl font-bold text-gray-800 animate__fadeInLeft animate__animated">Explore Our Top Foods</h2>
         <p className="text-gray-600 animate__animated animate__fadeInRight ">Check our latest food, details and what order more</p>
