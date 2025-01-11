@@ -29,7 +29,7 @@ const AvailableFoods = () => {
     setSort('')
   }
   return (
-    <div className='lg:container px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between'>
+    <div className='lg:container min-h-screen px-6 py-10 mx-auto  flex flex-col justify-between'>
       <Helmet> <title>Bite Bank | Available Food </title></Helmet>
       <div>
         <div className='flex flex-col md:flex-row justify-center items-center gap-5 '>
@@ -68,7 +68,7 @@ const AvailableFoods = () => {
           <button   onClick={() => setIsThreeColumnLayout(!isThreeColumnLayout)}
            className='btn bg-[#ebb475] text-white hover:bg-[#ebb475] hover:text-black'>Toggle Layout</button>
         </div>
-        <div className={`grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ${isThreeColumnLayout ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
+        <div className={`grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ${isThreeColumnLayout ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {foods.map(food => (
             < FoodCard key={food._id} food={food} />
           ))}

@@ -5,6 +5,7 @@ import popularimg3 from '../assets/images/popular3 kichiru.webp'
 import popularimg4 from '../assets/images/popular4 nihari.png'
 import popularimg5 from '../assets/images/popular5 pizza.jpeg'
 import popularimg6 from '../assets/images/popular6 kala vhuna.jpg'
+import { Link } from 'react-router-dom';
 
 const PopularFoods = () => {
     const destinations = [
@@ -16,11 +17,9 @@ const PopularFoods = () => {
         { name: "Kala Vhuna", image: popularimg6 },
       ];
     return (
-       <a  href="https://www.google.com"
-       target="_blank"
-       rel="noopener noreferrer" >
+       <Link to={'/foods'} >
         
-        <div className="bg-white px-5 lg:container mx-auto">
+        <div className="bg-white container mx-auto">
        <div className='flex flex-col gap-5'>    
            <h2 className='text-3xl text-center font-bold animate__slideInRight animate__animated'>Explore Some Popular Categories</h2>
            </div>
@@ -41,7 +40,7 @@ const PopularFoods = () => {
           </div>
         ))}
       </div>
-    </div></a>
+    </div></Link>
     );
 };
 

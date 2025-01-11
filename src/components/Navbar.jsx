@@ -7,39 +7,53 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li >
-        <NavLink className={({ isActive }) =>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
             isActive
-              ? " active px-3 py-2 rounded-md bg-[#ebb475] text-white hover:text-black"
-              : " px-3 py-2 bg-white hover:px-3 hover:py-2 hover:rounded-md hover:bg-[#ebb475] "
+              ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white hover:text-black hover:bg-[#ebb475] "
+              : " px-3 py-3 bg-white font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
           }
-         to="/">Home</NavLink>
+          to="/"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink className={({ isActive }) =>
+        <NavLink
+          className={({ isActive }) =>
             isActive
-              ? " active px-3 py-2 rounded-md bg-[#ebb475] text-white hover:text-black"
-              : "bg-white px-3 py-2 hover:px-3 hover:py-2 hover:rounded-md hover:bg-[#ebb475] "
+              ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white hover:text-black hover:bg-[#ebb475] "
+              : " px-3 py-3 bg-white font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
           }
-         to="/foods">AvailableFoods</NavLink>
+          to="/foods"
+        >
+          AvailableFoods
+        </NavLink>
       </li>
       <li>
-        <NavLink className={({ isActive }) =>
+        <NavLink
+          className={({ isActive }) =>
             isActive
-              ? " active px-3 py-2 rounded-md bg-[#ebb475] text-white hover:text-black"
-              : "bg-white px-3 py-2 hover:px-3 hover:py-2 hover:rounded-md hover:bg-[#ebb475] "
+              ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white hover:text-black hover:bg-[#ebb475] "
+              : " px-3 py-3 bg-white font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
           }
-         to="/contact">Contact</NavLink>
+          to="/contact"
+        >
+          Contact
+        </NavLink>
       </li>
 
       {user && (
         <li>
-          <NavLink className={({ isActive }) =>
-            isActive
-              ? " active px-3 py-2 rounded-md bg-[#ebb475] text-white hover:text-black"
-              : "bg-white px-3 py-2 hover:px-3 hover:py-2 hover:rounded-md hover:bg-[#ebb475] "
-          }
-           to="/add-food">
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white hover:text-black hover:bg-[#ebb475] "
+                : " px-3 py-3 bg-white font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+            }
+            to="/add-food"
+          >
             Add Food
           </NavLink>
         </li>
@@ -47,30 +61,39 @@ const Navbar = () => {
 
       {user && (
         <li>
-          <NavLink className={({ isActive }) =>
-            isActive
-              ? " active px-3 py-2 rounded-md bg-[#ebb475] text-white hover:text-black"
-              : "bg-white px-3 py-2 hover:px-3 hover:py-2 hover:rounded-md hover:bg-[#ebb475] "
-          }
-           to="/my-posted-food">ManageMyFood</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white hover:text-black hover:bg-[#ebb475] "
+                : " px-3 py-3 bg-white font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+            }
+            to="/my-posted-food"
+          >
+            ManageMyFood
+          </NavLink>
         </li>
       )}
 
       {user && (
         <li>
-          <NavLink className={({ isActive }) =>
-            isActive
-              ? " active px-3 py-2 rounded-md bg-[#ebb475] text-white hover:text-black"
-              : "bg-white px-3 py-2 hover:px-3 hover:py-2 hover:rounded-md hover:bg-[#ebb475] "
-          }
-           to="/my-food-requests">My Food Request</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white hover:text-black hover:bg-[#ebb475] "
+                : " px-3 py-3 bg-white font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+            }
+            to="/my-food-requests"
+          >
+            My Food Request
+          </NavLink>
         </li>
       )}
     </>
   );
 
   return (
-    <div className="navbar sticky top-0 z-10 bg-white shadow-sm lg:container  mx-auto">
+   <div className="bg-white sticky top-0 z-10">
+     <div className="navbar  bg-white container  mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -91,7 +114,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className=" flex flex-col gap-4 dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className=" flex flex-col gap-7 dropdown-content bg-base-100 rounded-box z-[1] mt-3  w-52 px-2 py-5  shadow"
           >
             {links}
           </ul>
@@ -103,29 +126,37 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="flex justify-between gap-4 text-sm ">{links}</ul>
+        <ul className="flex justify-between gap-3 text-sm">{links}</ul>
       </div>
 
       <div className="navbar-end">
-        <ul className="flex justify-between gap-2  text-sm">
+        <ul className="flex justify-between gap-2  text-sm ">
           {!user && (
             <li>
-              <NavLink className={({ isActive }) =>
-            isActive
-              ? " active px-3 py-2 rounded-md bg-[#ebb475] text-white hover:text-black"
-              : "bg-white px-3 py-2 hover:px-3 hover:py-2 hover:rounded-md hover:bg-[#ebb475] "
-          }
-               to="/login">Login</NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white hover:text-black hover:bg-[#ebb475] "
+                    : " px-3 py-3 bg-white font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+                }
+                to="/login"
+              >
+                Login
+              </NavLink>
             </li>
           )}
           {!user && (
-            <li >
-              <NavLink className={({ isActive }) =>
-            isActive
-              ? " active px-3 py-2 rounded-md bg-[#ebb475] text-white hover:text-black"
-              : "bg-white px-3 py-2 hover:px-3 hover:py-2 hover:rounded-md hover:bg-[#ebb475] "
-          }
-               to="/registration">Register</NavLink>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white hover:text-black hover:bg-[#ebb475] "
+                    : " px-3 py-3 bg-white font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+                }
+                to="/registration"
+              >
+                Register
+              </NavLink>
             </li>
           )}
         </ul>
@@ -163,6 +194,7 @@ const Navbar = () => {
         )}
       </div>
     </div>
+   </div>
   );
 };
 
