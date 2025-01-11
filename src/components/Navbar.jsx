@@ -40,7 +40,7 @@ const Navbar = () => {
           }
           to="/contact"
         >
-          Contact
+          Contact Us
         </NavLink>
       </li>
 

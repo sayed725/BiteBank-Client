@@ -1,10 +1,12 @@
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const Contact = () => {
 
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
         e.preventDefault()
+        toast.success('Thanks For Your Response')
     }
 
 
@@ -71,7 +73,7 @@ const Contact = () => {
           ></textarea>
           <button
             type="submit"
-            className="w-full bg-[#ebb475] text-white btn rounded-lg hover:bg-red-600 transition col-span-2 hover:text-black"
+            className="w-full bg-[#ebb475] text-white btn rounded-lg hover:bg-[#ebb475] transition col-span-2 hover:text-black"
           >
             SEND YOUR MESSAGE
           </button>

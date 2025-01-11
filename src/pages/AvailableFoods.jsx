@@ -68,7 +68,7 @@ const AvailableFoods = () => {
           <button   onClick={() => setIsThreeColumnLayout(!isThreeColumnLayout)}
            className='btn bg-[#ebb475] text-white hover:bg-[#ebb475] hover:text-black'>Toggle Layout</button>
         </div>
-        <div className={`grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ${isThreeColumnLayout ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+        <div className={`grid grid-cols-1 gap-5 mt-8 md:grid-cols-2 ${isThreeColumnLayout ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {foods.map(food => (
             < FoodCard key={food._id} food={food} />
           ))}

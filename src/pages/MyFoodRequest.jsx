@@ -3,21 +3,42 @@ import { AuthContext } from '../providers/AuthProvider'
 import { format } from 'date-fns'
 import useAxiosSecure from '../Hooks/useAxiosSecure'
 import { Helmet } from 'react-helmet-async'
+import LoadingSpinner from '../components/LoadingSpinner'
+import { useQuery } from '@tanstack/react-query'
 
 const MyFoodRequest = () => {
   const axiosSecure = useAxiosSecure()
   const { user } = useContext(AuthContext)
-  const [foods, setFoods] = useState([])
+  // const [foods, setFoods] = useState([])
 
-  useEffect(() => {
-    fetchAllFoods()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user])
-  const fetchAllFoods = async () => {
-    const { data } = await axiosSecure.get(
-      `/request-by/${user?.email}`
-    )
-    setFoods(data)
+  // useEffect(() => {
+  //   fetchAllFoods()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [user])
+  // const fetchAllFoods = async () => {
+  //   const { data } = await axiosSecure.get(
+  //     `/request-by/${user?.email}`
+  //   )
+  //   setFoods(data)
+  // }
+
+  const { data:foods , isLoading} = useQuery({ queryKey:['requestFoods'], queryFn: async ()=>{
+    const { data } = await axiosSecure.get(`/request-by/${user?.email}`) 
+    return data 
+}})
+// console.log(foods, isLoading)
+
+if(isLoading) return <LoadingSpinner></LoadingSpinner>
+
+  if (foods.length == 0) {
+    return (
+      <div className="py-[100px] min-h-screen">
+        <h2 className="text-4xl text-center font-bold">
+          You Have no Food Request
+        </h2>
+        
+      </div>
+    );
   }
 
 
@@ -105,7 +126,7 @@ const MyFoodRequest = () => {
                       </td>
 
                       <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                        {format(new Date(food.reqDate), 'P')}
+                        {food.reqDate && format(new Date(food.reqDate), 'P')}
                       </td>
 
                       <td className='px-4 py-4 text-sm text-gray-500   whitespace-nowrap'>

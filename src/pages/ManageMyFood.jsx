@@ -6,20 +6,32 @@ import { format } from 'date-fns'
 import toast from 'react-hot-toast'
 import useAxiosSecure from '../Hooks/useAxiosSecure'
 import { Helmet } from 'react-helmet-async'
+import LoadingSpinner from '../components/LoadingSpinner'
+import { useQuery } from '@tanstack/react-query'
 const ManageMyFood = () => {
   const axiosSecure = useAxiosSecure()
   const { user } = useContext(AuthContext)
-  const [foods, setFoods] = useState([])
-  useEffect(() => {
-    fetchAllFoods()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user])
-  const fetchAllFoods = async () => {
-    const { data } = await axiosSecure.get(
-      `/foods-by-donator/${user?.email}`
-    )
-    setFoods(data)
-  }
+  // const [foods, setFoods] = useState([])
+  // useEffect(() => {
+  //   fetchAllFoods()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [user])
+  // const fetchAllFoods = async () => {
+  //   const { data } = await axiosSecure.get(
+  //     `/foods-by-donator/${user?.email}`
+  //   )
+  //   setFoods(data)
+  // }
+
+  const { data:foods , isLoading} = useQuery({ queryKey:['manageFood'], queryFn: async ()=>{
+    const { data } = await axiosSecure.get(`/foods-by-donator/${user?.email}`) 
+    return data 
+}})
+// console.log(foods, isLoading)
+
+if(isLoading) return <LoadingSpinner></LoadingSpinner>
+
+  
 
   // delete functionality
   const handleDelete = async id => {
@@ -39,6 +51,16 @@ const ManageMyFood = () => {
       // console.log(err)
       toast.error(err.message)
     }
+  }
+  if (!foods.length) {
+    return (
+      <div className="py-[100px] min-h-screen">
+        <h2 className="text-4xl text-center font-bold">
+          Please Add Some Food
+        </h2>
+        
+      </div>
+    );
   }
 
   const modernDelete = id => {
@@ -70,7 +92,7 @@ const ManageMyFood = () => {
     ))
   }
   return (
-    <section className='lg:container px-4 mx-auto pt-12'>
+    <section className='lg:container px-4 mx-auto pt-12 min-h-screen'>
       <Helmet> <title>Bite Bank | Manage Food </title></Helmet>
       <div className='flex items-center gap-x-3'>
         <h2 className='text-lg font-medium text-gray-800 '>My Posted Foods</h2>

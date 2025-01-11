@@ -115,7 +115,7 @@ const FoodDetails = () => {
   
 
   return (
-    <div className="lg:container mx-auto bg-white shadow rounded-lg p-4">
+    <div className="lg:container min-h-screen mx-auto bg-white shadow rounded-lg p-4">
       <Helmet> <title>Bite Bank | Food Details </title></Helmet>
       
         <div className="flex flex-col md:flex-row items-start gap-10 sm:p-6">
