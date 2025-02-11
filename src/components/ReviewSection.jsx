@@ -41,7 +41,7 @@ const testimonials = [
 
 const ReviewSection = () => {
   return (
-    <div className="bg-[#ebb475] text-white py-10 lg:px-[200px] rounded-md lg:container mx-auto">
+    <div className="bg-[#ebb475] text-white py-10 lg:px-[200px] rounded-md w-11/12 lg:container mx-auto">
       <div className="">
         {/* Section Header */}
       <div className="flex flex-col gap-5 pb-10 mb-10 justify-center items-center">

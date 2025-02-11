@@ -74,7 +74,7 @@ const BlogPost = () => {
   ];
 
   return (
-    <div className="py-10  container mx-auto">
+    <div className="py-10 lg:container mx-auto">
       <div className="text-center mb-8 flex flex-col gap-6 ">
         <h2 className="text-3xl font-bold text-gray-800">Our Latest Blog Posts</h2>
         <p className="text-gray-600">
@@ -103,7 +103,7 @@ const BlogPost = () => {
         }}
         speed={2000}
         modules={[Autoplay]}
-        className="container mx-auto w-11/12 sm:w-full">
+        className="lg:container mx-auto w-11/12">
 
 
      

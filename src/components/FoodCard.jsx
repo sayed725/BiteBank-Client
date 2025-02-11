@@ -16,7 +16,7 @@ const FoodCard = ({ food }) => {
         <img src={image} alt="food" className="w-full h-[250px] object-cover" />
 
         {/* Content Section */}
-        <div className="sm:p-4 flex flex-col gap-2">
+        <div className="p-4 flex flex-col gap-2">
           {/* Title and Favorite Icon */}
           <div className="flex items-center justify-between">
             <h3 className="text-lg mt-2 font-semibold text-gray-800">{title}</h3>
