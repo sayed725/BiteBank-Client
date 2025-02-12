@@ -51,7 +51,7 @@ const AvailableFoods = () => {
                 aria-label="Enter Food Title"
               />
 
-              <button className="px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-white uppercase transition-colors duration-300 transform bg-[#ebb475] rounded-md hover:bg-[#ebb475] hover:text-black focus:bg-[#ebb475] focus:outline-none">
+              <button className="px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-white dark:text-gray-700 uppercase transition-colors duration-300 transform bg-[#ebb475] rounded-md hover:bg-[#ebb475] hover:text-black focus:bg-[#ebb475] focus:outline-none">
                 Search
               </button>
             </div>
@@ -71,13 +71,13 @@ const AvailableFoods = () => {
           </div>
           <button
             onClick={handleReset}
-            className="btn bg-[#ebb475] text-white hover:bg-[#ebb475] hover:text-black"
+            className="btn bg-[#ebb475] text-white dark:text-gray-700 hover:bg-[#ebb475] hover:text-black"
           >
             Reset
           </button>
           <button 
             onClick={() => setIsThreeColumnLayout(!isThreeColumnLayout)}
-            className="btn hidden lg:block bg-[#ebb475] text-white hover:bg-[#ebb475] hover:text-black"
+            className="btn hidden lg:block bg-[#ebb475] text-white dark:text-gray-700 hover:bg-[#ebb475] hover:text-black"
           >
             Toggle Layout
           </button>

@@ -55,8 +55,8 @@ const Login = () => {
         ></div>
 
         <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
-          <div className='flex justify-center mx-auto'>
-            <img className='w-auto h-7 sm:h-8' src={logo} alt='' />
+          <div className='flex justify-center mx-auto '>
+            <img className='w-auto h-7 sm:h-8 dark:bg-[#1E1E1E] rounded-full' src={logo} alt='' />
           </div>
 
           <p className='mt-3 text-xl text-center text-gray-600 animate__animated animate__fadeInLeft'>
@@ -142,7 +142,7 @@ const Login = () => {
             <div className='mt-6'>
               <button
                 type='submit'
-                className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#ebb475] rounded-lg hover:bg-[#ebb475] hover:text-black focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
+                className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white dark:text-gray-700 capitalize transition-colors duration-300 transform bg-[#ebb475] rounded-lg hover:bg-[#ebb475] hover:text-black focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
               >
                 Log In
               </button>
