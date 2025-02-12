@@ -19,7 +19,7 @@ const FoodCard = ({ food }) => {
         <div className="p-4 flex flex-col gap-2">
           {/* Title and Favorite Icon */}
           <div className="flex items-center justify-between">
-            <h3 className="text-lg mt-2 font-semibold text-gray-800 dark:text-gray-200">{title}</h3>
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">{title}</h3>
             <h3
               className={`px-3 py-1  ${
                 status === "Available" && "text-green-500 bg-green-100/60 dark:bg-[#252525]"
@@ -43,7 +43,7 @@ const FoodCard = ({ food }) => {
 
           {/* Price and Distance */}
           <div className="flex items-center justify-between text-sm text-gray-500">
-            <Link to={`/food/${_id}`} className="w-full px-2 py-3 mt-4 text-center rounded-md text-white dark:text-gray-700 font-bold capitalize transition-colors duration-300 transform bg-[#ebb475] hover:text-black focus:outline-none focus:text-black">View Details</Link>
+            <Link to={`/food/${_id}`} className="w-full px-2 py-3 text-center rounded-md text-white dark:text-gray-700 font-bold capitalize transition-colors duration-300 transform bg-[#ebb475] hover:text-black focus:outline-none focus:text-black">View Details</Link>
           </div>
         </div>
       </div>

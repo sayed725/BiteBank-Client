@@ -135,7 +135,7 @@ const handleRecipes = () =>{
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-lg font-semibold dark:text-gray-200">{recipe.name}</h2>
+              <h2 className="text-lg text-gray-800 font-semibold dark:text-gray-200">{recipe.name}</h2>
               <div className="flex justify-between items-center mt-2 text-gray-800 dark:text-gray-200">
                 <span className="flex items-center gap-1">
                   <FaClock /> {recipe.time}
