@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { FaHeart, FaClock, FaStar, FaCheckCircle } from "react-icons/fa";
 
 
@@ -7,7 +8,7 @@ const recipes = [
     name: "Spaghetti Carbonara", 
     time: "20 min", 
     rating: "4.8", 
-    image: "https://source.unsplash.com/400x300/?pasta",
+    image: "/Spaghetti Carbonara.avif",
     description: [
       "Rich and creamy egg-based sauce",
       "Crispy pancetta for added flavor",
@@ -19,7 +20,7 @@ const recipes = [
     name: "Grilled Chicken", 
     time: "30 min", 
     rating: "4.6", 
-    image: "https://source.unsplash.com/400x300/?grilled-chicken",
+    image: "/Grilled Chicken.jpg",
     description: [
       "Marinated in herbs and spices",
       "Juicy and tender texture",
@@ -31,10 +32,10 @@ const recipes = [
     name: "Avocado Toast", 
     time: "10 min", 
     rating: "4.7", 
-    image: "https://source.unsplash.com/400x300/?avocado-toast",
+    image: "/Avocado Toast.avif",
     description: [
       "Creamy avocado spread",
-      "Topped with cherry tomatoes and sesame seeds",
+      "Topped with cherry tomatoes",
       "Drizzled with lemon juice"
     ]
   },
@@ -43,7 +44,7 @@ const recipes = [
     name: "Chicken Alfredo Pasta", 
     time: "25 min", 
     rating: "4.9", 
-    image: "https://source.unsplash.com/400x300/?alfredo-pasta",
+    image: "/Chicken Alfredo Pasta.jpeg",
     description: [
       "Creamy Alfredo sauce with garlic",
       "Tender grilled chicken slices",
@@ -55,7 +56,7 @@ const recipes = [
     name: "Mango Smoothie", 
     time: "5 min", 
     rating: "4.8", 
-    image: "https://source.unsplash.com/400x300/?mango-smoothie",
+    image: "/Mango Smoothie.webp",
     description: [
       "Fresh mango blended with yogurt",
       "Naturally sweet and refreshing",
@@ -67,7 +68,7 @@ const recipes = [
     name: "Stuffed Bell Peppers", 
     time: "35 min", 
     rating: "4.7", 
-    image: "https://source.unsplash.com/400x300/?stuffed-peppers",
+    image: "/Stuffed Bell Peppers.webp",
     description: [
       "Bell peppers filled with rice and veggies",
       "Seasoned with herbs and spices",
@@ -79,7 +80,7 @@ const recipes = [
     name: "Chocolate Brownie", 
     time: "40 min", 
     rating: "4.9", 
-    image: "https://source.unsplash.com/400x300/?brownies",
+    image: "/Chocolate Brownie.jpg",
     description: [
       "Rich and fudgy texture",
       "Loaded with dark chocolate",
@@ -91,7 +92,7 @@ const recipes = [
     name: "Berry Parfait", 
     time: "15 min", 
     rating: "4.6", 
-    image: "https://source.unsplash.com/400x300/?berry-parfait",
+    image: "/Berry Parfait .webp",
     description: [
       "Layers of fresh berries and yogurt",
       "Topped with crunchy granola",
@@ -99,6 +100,15 @@ const recipes = [
     ]
   }
 ];
+
+const handleRecipes = () =>{
+    toast.success("Recipes Saved")
+}
+
+
+
+
+
 function Recipes() {
   return (
     <div className="py-10 w-11/12 lg:container mx-auto min-h-screen bg-white dark:bg-[#1E1E1E]">
@@ -110,7 +120,7 @@ function Recipes() {
         {recipes.map((recipe) => (
           <div
             key={recipe.id}
-            className="bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden"
+            className="bg-white text-white dark:bg-[#252525] rounded-lg shadow-lg overflow-hidden"
           >
             <img
               src={recipe.image}
@@ -118,8 +128,8 @@ function Recipes() {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-xl font-semibold">{recipe.name}</h2>
-              <div className="flex justify-between items-center mt-2 text-gray-400">
+              <h2 className="text-lg font-semibold dark:text-gray-200">{recipe.name}</h2>
+              <div className="flex justify-between items-center mt-2 text-gray-800 dark:text-gray-200">
                 <span className="flex items-center gap-1">
                   <FaClock /> {recipe.time}
                 </span>
@@ -128,7 +138,7 @@ function Recipes() {
                 </span>
               </div>
 
-              <ul className="mt-3 text-gray-300 text-sm space-y-1">
+              <ul className="mt-3 text-gray-800 dark:text-gray-200 text-sm space-y-1">
               {recipe.description.map((point, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <FaCheckCircle className="text-green-400" /> {point}
@@ -139,7 +149,8 @@ function Recipes() {
 
 
 
-              <button className="mt-4 flex items-center justify-center gap-2 bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 w-full text-center">
+              <button onClick={handleRecipes}
+               className="mt-4 flex items-center justify-center gap-2 bg-[#ebb475] text-white py-2 px-4 rounded-lg dark:text-gray-700  hover:bg-[#ebb475] w-full text-center">
                 <FaHeart /> Save Recipe
               </button>
             </div>
