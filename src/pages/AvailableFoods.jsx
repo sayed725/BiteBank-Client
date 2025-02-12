@@ -7,22 +7,11 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 
 const AvailableFoods = () => {
-  // const [foods, setFoods] = useState([])
+  
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("dec");
   const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true);
-  // useEffect(() => {
-  //   const fetchAllFoods = async () => {
-  //     const { data } = await axios.get(
-  //       `${
-  //         import.meta.env.VITE_API_URL
-  //       }/all-foods?search=${search}&sort=${sort}`
-  //     );
-  //     setFoods(data);
-  //   };
-  //   fetchAllFoods();
-  // }, [search, sort]);
-  // console.log(foods,search,sort)
+ 
 
   const { data: foods = [], isLoading } = useQuery({
     queryKey: ["available foods", search, sort],
