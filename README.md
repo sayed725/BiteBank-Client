@@ -15,7 +15,7 @@ Welcome to this project.This is a user-friendly food sharing website where there
 
 
 
-### 5 features of this website/project
+### Top features of this website/project
 
 - There is a beautiful slides showcasing images of some top foods on Banner.
 - User Login / Register Authentication and jwt Security.

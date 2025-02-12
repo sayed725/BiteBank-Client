@@ -1,6 +1,9 @@
 import toast from "react-hot-toast";
 import { FaHeart, FaClock, FaStar, FaCheckCircle } from "react-icons/fa";
+import { AuthContext } from "../providers/AuthProvider";
+import { useContext } from "react";
 
+const Recipes =()=>{
 
 const recipes = [
   { 
@@ -101,7 +104,12 @@ const recipes = [
   }
 ];
 
+const { user } = useContext(AuthContext)
+
 const handleRecipes = () =>{
+
+    if(!user) return toast.error("Please Log in First")
+
     toast.success("Recipes Saved")
 }
 
@@ -109,7 +117,6 @@ const handleRecipes = () =>{
 
 
 
-function Recipes() {
   return (
     <div className="py-10 w-11/12 lg:container mx-auto min-h-screen bg-white dark:bg-[#1E1E1E]">
       <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200 animate__fadeInLeft animate__animated text-center mb-5">
@@ -160,5 +167,6 @@ function Recipes() {
     </div>
   );
 }
+
 
 export default Recipes;

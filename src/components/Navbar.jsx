@@ -180,11 +180,11 @@ const Navbar = () => {
           </ul>
 
           {user && (
-            <div className="dropdown border-2 rounded-full border-[#ebb475] dropdown-end z-50">
+            <div className="dropdown  dropdown-end z-50">
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar"
+                className="btn btn-ghost hover:border-2 border-[#ebb475] hover:border-[#ebb475] btn-circle avatar"
               >
                 <div title={user?.displayName} className="w-10 rounded-full">
                   <img
