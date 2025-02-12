@@ -41,7 +41,7 @@ const testimonials = [
 
 const ReviewSection = () => {
   return (
-    <div className="bg-[#ebb475] text-white py-10 lg:px-[200px] rounded-md w-11/12 lg:container mx-auto">
+    <div className="bg-[#ebb475] text-white dark:text-gray-700 py-10 lg:px-[200px] rounded-md w-11/12 lg:container mx-auto">
       <div className="">
         {/* Section Header */}
       <div className="flex flex-col gap-5 pb-10 mb-10 justify-center items-center">
@@ -86,11 +86,11 @@ const ReviewSection = () => {
         </Swiper>
 
         {/* Stats Section */}
-        <div className="py-10 text-white container mx-auto rounded-md">
+        <div className="py-10 text-white dark:text-gray-700 container mx-auto rounded-md">
       <div className="container mx-auto grid grid-cols-2  lg:grid-cols-4 gap-8 text-center">
         {stats.map((stat, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className="text-4xl font-bold border-b-2 pb-4 border-white ">{stat.number}</div>
+            <div className="text-4xl font-bold border-b-2 pb-4 border-white dark:border-gray-700 ">{stat.number}</div>
             <div className="pt-4 text-lg">{stat.label}</div>
           </div>
         ))}

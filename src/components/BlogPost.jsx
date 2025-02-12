@@ -76,8 +76,8 @@ const BlogPost = () => {
   return (
     <div className="py-10 lg:container mx-auto">
       <div className="text-center mb-8 flex flex-col gap-6 ">
-        <h2 className="text-3xl font-bold text-gray-800">Our Latest Blog Posts</h2>
-        <p className="text-gray-600">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-200">Our Latest Blog Posts</h2>
+        <p className="text-gray-600 dark:text-gray-200">
           Check our recent articles, what we are talking about and what you can
         </p>
       </div>
@@ -111,7 +111,7 @@ const BlogPost = () => {
         {posts.map((post, index) => (
           <SwiperSlide
             key={index}
-            className="bg-white shadow-lg rounded-lg overflow-hidden"
+            className="bg-white dark:bg-[#252525] shadow-lg rounded-lg overflow-hidden"
           >
             <img
               src={post.image}
@@ -119,10 +119,10 @@ const BlogPost = () => {
               className="w-full h-[200px] object-cover hover:scale-[1.05] transition-all"
             />
             <div className="p-2 h-[200px] flex flex-col mt-5 justify-between">
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                 {post.title}
               </h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-gray-600 dark:text-gray-200 mt-2">
                 {post.description}...{" "}
                 <a
                   href="https://www.google.com"
@@ -133,7 +133,7 @@ const BlogPost = () => {
                   Read more...
                 </a>
               </p>
-              <div className="mt-4 flex items-center justify-between text-sm text-gray-500 hover:text-blue-500">
+              <div className="mt-4 flex items-center justify-between text-sm text-gray-500 dark:text-gray-200 hover:text-blue-500">
                 <div className="flex items-center">
                   <FaCalendarAlt className="mr-2" />
                   {post.date}

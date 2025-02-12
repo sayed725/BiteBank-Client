@@ -13,7 +13,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
-              : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-100 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+              : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
           }
           to="/"
         >
@@ -25,7 +25,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
-              : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-100 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+              : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
           }
           to="/foods"
         >
@@ -37,7 +37,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive
               ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
-              : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-100 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+              : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
           }
           to="/contact"
         >
@@ -51,7 +51,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
-                : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-100 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+                : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
             }
             to="/add-food"
           >
@@ -66,7 +66,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
-                : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-100 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+                : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
             }
             to="/my-posted-food"
           >
@@ -81,7 +81,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
-                : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-100 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+                : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
             }
             to="/my-food-requests"
           >
@@ -126,7 +126,7 @@ const Navbar = () => {
           </div>
           <Link to="/" className="flex gap-2 items-center">
             <img className="w-auto h-7" src={logo} alt="logo" />
-            <p className="font-bold dark:text-white">Bite Bank</p>
+            <p className="font-bold dark:text-gray-200">Bite Bank</p>
           </Link>
         </div>
 
@@ -143,7 +143,7 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     isActive
                       ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
-                      : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-100 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+                      : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
                   }
                   to="/login"
                 >
@@ -157,7 +157,7 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     isActive
                       ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
-                      : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-100 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+                      : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
                   }
                   to="/registration"
                 >

@@ -19,9 +19,9 @@ const PopularFoods = () => {
     return (
        <Link to={'/foods'} >
         
-        <div className="bg-white lg:container mx-auto w-11/12">
+        <div className="bg-white dark:bg-[#1E1E1E] lg:container mx-auto w-11/12">
        <div className='flex flex-col gap-5'>    
-           <h2 className='text-3xl text-center font-bold animate__slideInRight animate__animated'>Explore Some Popular Categories</h2>
+           <h2 className='text-3xl text-center dark:text-gray-200 font-bold animate__slideInRight animate__animated'>Explore Some Popular Categories</h2>
            </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto mt-10">
         {destinations.map((destination) => (
@@ -35,7 +35,7 @@ const PopularFoods = () => {
               className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <p className="text-white text-xl font-bold">{destination.name}</p>
+              <p className="text-white dark:text-gray-200 text-xl font-bold">{destination.name}</p>
             </div>
           </div>
         ))}

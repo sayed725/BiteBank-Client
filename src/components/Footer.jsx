@@ -1,19 +1,19 @@
 import logo from '../assets/images/smalllogo.png'
 const Footer = () => {
   return (
-    <footer className='bg-white shadow-sm lg:container mx-auto'>
+    <footer className='bg-white dark:bg-[#1E1E1E] shadow-sm lg:container mx-auto'>
       <hr />
       <div className='py-8 '>
         <div className='flex flex-col items-center text-center'>
           <div className='flex gap-2 items-center'>
             <img className='w-auto h-7' src={logo} alt='' />
-            <span>Bite Bank</span>
+            <span className='dark:text-gray-200'>Bite Bank</span>
           </div>
 
           <div className='flex flex-wrap justify-center mt-6 -mx-4'>
             <a
               href='/'
-              className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+              className='mx-4 text-sm text-gray-600 dark:text-gray-200 transition-colors duration-300 hover:text-blue-500 '
               aria-label='Reddit'
             >
               {' '}
@@ -22,7 +22,7 @@ const Footer = () => {
 
             <a
               href='contact'
-              className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+              className='mx-4 text-sm text-gray-600 dark:text-gray-200 transition-colors duration-300 hover:text-blue-500 '
               aria-label='Reddit'
             >
               {' '}
@@ -31,7 +31,7 @@ const Footer = () => {
 
             <a
               href='#'
-              className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+              className='mx-4 text-sm text-gray-600 dark:text-gray-200 transition-colors duration-300 hover:text-blue-500 '
               aria-label='Reddit'
             >
               {' '}
@@ -40,7 +40,7 @@ const Footer = () => {
 
             <a
               href='#'
-              className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+              className='mx-4 text-sm text-gray-600 dark:text-gray-200 transition-colors duration-300 hover:text-blue-500 '
               aria-label='Reddit'
             >
               {' '}
@@ -49,7 +49,7 @@ const Footer = () => {
 
             <a
               href='#'
-              className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+              className='mx-4 text-sm text-gray-600 dark:text-gray-200 transition-colors duration-300 hover:text-blue-500 '
               aria-label='Reddit'
             >
               {' '}
@@ -58,15 +58,15 @@ const Footer = () => {
           </div>
         </div>
         <div className='flex justify-center items-center mt-6'>
-          <h2 className='border-r-2 pr-4 border-[#ebb475]'>Address: 60 Wall Street, New York, NY  10018 US</h2>
-          <h2 className='border-r-2 pl-4 pr-4 border-[#ebb475]'>Phone: 1-800-123-4567</h2>
-          <h2 className='pl-4'>Active Hours: Mon – Sat: 8:00 – 20:00</h2>
+          <h2 className='border-r-2 pr-4 border-[#ebb475] dark:text-gray-200'>Address: 60 Wall Street, New York, NY  10018 US</h2>
+          <h2 className='border-r-2 pl-4 pr-4 border-[#ebb475] dark:text-gray-200'>Phone: 1-800-123-4567</h2>
+          <h2 className='pl-4 dark:text-gray-200'>Active Hours: Mon – Sat: 8:00 – 20:00</h2>
         </div>
 
         <hr className='my-6 border-gray-200 md:my-10 ' />
 
         <div className='flex flex-col items-center sm:flex-row sm:justify-between'>
-          <p className='text-sm text-gray-500 '>
+          <p className='text-sm text-gray-500 dark:text-gray-200 '>
             © Copyright 2021. All Rights Reserved.
           </p>
 
@@ -74,7 +74,7 @@ const Footer = () => {
             <a
               href='https://www.facebook.com/abu.ssayed.khan.2024'
                target="_blank"
-              className='mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+              className='mx-2 text-gray-600 dark:text-gray-200 transition-colors duration-300 hover:text-blue-500 '
               aria-label='Reddit'
             >
               <svg
@@ -90,7 +90,7 @@ const Footer = () => {
             <a
               href='https://www.facebook.com/abu.ssayed.khan.2024'
                target="_blank"
-              className='mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+              className='mx-2 text-gray-600 dark:text-gray-200 transition-colors duration-300 hover:text-blue-500 '
               aria-label='Facebook'
             >
               <svg
@@ -106,7 +106,7 @@ const Footer = () => {
             <a
               href='https://www.facebook.com/abu.ssayed.khan.2024'
                target="_blank"
-              className='mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+              className='mx-2 text-gray-600 dark:text-gray-200 transition-colors duration-300 hover:text-blue-500 '
               aria-label='Github'
             >
               <svg
