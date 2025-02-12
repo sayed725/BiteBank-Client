@@ -7,7 +7,7 @@ import PopularFoods from '../components/PopularFoods'
 
 const Home = () => {
   return (
-    <div>
+    <div className='dark:bg-[#1E1E1E]'>
       <Helmet> <title>Bite Bank | Home </title></Helmet>
       <Carousel />
       <FeaturedFood />

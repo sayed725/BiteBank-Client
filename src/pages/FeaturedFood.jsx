@@ -6,15 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const FeaturedFood = () => {
-    // const [foods, setFoods] = useState([])
-    // useEffect(() => {
-    //   fetchAllJobs()
-    // }, [])
-  
-    // const fetchAllJobs = async () => {
-    //   const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/foods`)
-    //   setFoods(data)
-    // }
+   
 
     const { data:foods , isLoading} = useQuery({ queryKey:['foods'], queryFn: async ()=>{
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/foods`) 
