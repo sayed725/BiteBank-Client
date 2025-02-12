@@ -100,7 +100,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost lg:hidden border-2 border-[#ebb475] mr-2"
+              className="btn btn-ghost dark:text-gray-200 lg:hidden border-2 border-[#ebb475] mr-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className=" flex flex-col gap-7 dropdown-content bg-base-100 rounded-box z-[1] mt-3  w-52 px-2 py-5  shadow"
+              className=" flex flex-col dark:bg-[#1E1E1E] gap-7 dropdown-content bg-base-100 rounded-box z-[1] mt-3  w-52 px-2 py-5  shadow"
             >
               {links}
             </ul>
