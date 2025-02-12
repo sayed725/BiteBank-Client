@@ -13,7 +13,7 @@ const FoodCard = ({ food }) => {
     >
       <div className=" rounded-lg shadow-md overflow-hidden bg-white dark:bg-[#252525]">
         {/* Image Section */}
-        <img src={image} alt="food" className="w-full h-[250px] object-cover" />
+        <img src={image} alt="food" className="w-full h-48 object-cover" />
 
         {/* Content Section */}
         <div className="p-4 flex flex-col gap-2">

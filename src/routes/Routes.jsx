@@ -13,6 +13,7 @@ import MyFoodRequest from '../pages/MyFoodRequest'
 import ManageMyFood from '../pages/ManageMyFood'
 import UpdateFood from '../pages/UpdateFood'
 import Contact from '../components/Contact'
+import Recipes from '../pages/Recipes'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path:'/contact',
         element:<Contact></Contact>
+      },
+      {
+        path:'/recipes',
+        element: <Recipes></Recipes>
       }
     ],
   },

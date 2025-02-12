@@ -39,6 +39,18 @@ const Navbar = () => {
               ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
               : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
           }
+          to="/recipes"
+        >
+          Recipes
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? " active px-3 py-3 rounded-md bg-[#ebb475] font-semibold text-white dark:text-gray-900 hover:text-black hover:bg-[#ebb475] "
+              : " px-3 py-3 bg-white dark:bg-[#1E1E1E] dark:text-gray-200 font-semibold hover:px-3 hover:py-3 hover:rounded-md hover:bg-[#ebb475] "
+          }
           to="/contact"
         >
           Contact Us
