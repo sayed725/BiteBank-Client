@@ -135,7 +135,7 @@ const BlogPost = () => {
               </p>
               <div className="mt-4 flex items-center justify-between text-sm text-gray-500 dark:text-gray-200 hover:text-blue-500">
                 <div className="flex items-center">
-                  <FaCalendarAlt className="mr-2" />
+                  <FaCalendarAlt className="mr-2 text-blue-500" />
                   {post.date}
                 </div>
                 <a  href="https://www.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center">

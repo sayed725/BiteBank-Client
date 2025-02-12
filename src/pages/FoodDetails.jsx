@@ -115,7 +115,7 @@ const FoodDetails = () => {
   
 
   return (
-    <div className="lg:container min-h-screen mx-auto bg-white shadow rounded-lg p-4">
+    <div className="lg:container min-h-screen mx-auto bg-white dark:bg-[#1E1E1E] shadow rounded-lg p-4">
       <Helmet> <title>Bite Bank | Food Details </title></Helmet>
       
         <div className="flex flex-col md:flex-row items-start gap-10 sm:p-6">
@@ -134,55 +134,55 @@ const FoodDetails = () => {
             <div className=" flex flex-col justify-between h-full">
               {/* Title and Favorite Icon */}
              
-                <h3 className="text-lg  font-semibold text-gray-800">
+                <h3 className="text-lg  font-semibold text-gray-800 dark:text-gray-200">
                   {title}
                 </h3>
                 <h3
-                  className={`px-3 py-1 w-[80px] text-center  ${
-                    status === "Available" && "text-green-500 bg-green-100/60"
-                  }  text-xs  rounded-full`}
+                  className={`px-3 py-1 w-[80px] text-center dark:text-start dark:px-0  ${
+                    status === "Available" && "text-green-500 bg-green-100/60 dark:bg-[#1E1E1E]"
+                  }  text-xs  rounded-full dark:bg-[#1E1E1E]`}
                 >
                   {status}
                 </h3>
               
               <p className="text-sm text-red-500 font-semibold">
-                Quantity: <span className="text-gray-600">{quantity}</span>
+                Quantity: <span className="text-gray-600 dark:text-gray-200">{quantity}</span>
               </p>
 
               {/* Cuisine and Location */}
-              <p className="text-sm text-gray-600 font-semibold">
-                    Location: <span className="text-gray-600">{location}</span>
+              <p className="text-sm text-gray-600 font-semibold dark:text-gray-200">
+                    Location: <span className="text-gray-600 dark:text-gray-200">{location}</span>
                   </p>
 
               {/* Closing Time */}
 
-              <p className="mt-6 text-sm font-bold text-gray-600 ">
+              <p className="mt-6 text-sm font-bold text-gray-600 dark:text-gray-200 ">
                 Donator Details:
               </p>
               <div className="flex items-center gap-5">
                 <div className="flex flex-col gap-2">
-                  <p className="text-sm text-gray-600 font-semibold">
-                    Name: <span className="text-gray-600">{name}</span>
+                  <p className="text-sm text-gray-600 dark:text-gray-200 font-semibold">
+                    Name: <span className="text-gray-600 dark:text-gray-200">{name}</span>
                   </p>
-                  <p className="text-sm text-gray-600 font-semibold">
-                    Email: <span className="text-gray-600">{email}</span>
+                  <p className="text-sm text-gray-600 font-semibold dark:text-gray-200">
+                    Email: <span className="text-gray-600 dark:text-gray-200">{email}</span>
                   </p>
                 </div>
                 <div className="rounded-full object-cover overflow-hidden w-14 h-14">
                   <img referrerPolicy="no-referrer" src={photo} alt="" />
                 </div>
               </div>
-              <p className="text-sm text-gray-600 font-semibold">
-                Expiry Date: <span className="text-gray-600">{deadline ? format(new Date(deadline), 'P') : ''}</span>
+              <p className="text-sm text-gray-600 font-semibold dark:text-gray-200">
+                Expiry Date: <span className="text-gray-600 dark:text-gray-200">{deadline ? format(new Date(deadline), 'P') : ''}</span>
               </p>
-              <p className="text-sm text-gray-600 font-semibold">
-                Notes: <span className="text-gray-600">{notes}</span>
+              <p className="text-sm text-gray-600 font-semibold dark:text-gray-200">
+                Notes: <span className="text-gray-600 dark:text-gray-200">{notes}</span>
               </p>
 
               {/* Price and Distance */}
-              <div className="flex items-center justify-between text-sm text-gray-500">
+              <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-200">
                 <button onClick={() => document.getElementById("my_modal_3").showModal()}
-                className="w-full px-2 py-3 mt-4 rounded-md text-white font-bold capitalize transition-colors duration-300 transform bg-[#ebb475] hover:text-black focus:outline-none focus:text-black">
+                className="w-full px-2 py-3 mt-4 rounded-md text-white font-bold capitalize transition-colors duration-300 transform dark:text-gray-700 bg-[#ebb475] hover:text-black focus:outline-none focus:text-black">
                   Request
                 </button>
               </div>
@@ -199,20 +199,20 @@ const FoodDetails = () => {
         open modal
       </button>
       <dialog id="my_modal_3" className="modal">
-        <div className="modal-box w-11/12 max-w-5xl">
+        <div className="modal-box w-11/12 max-w-5xl dark:bg-[#1E1E1E]">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 dark:text-gray-200">
               ✕
             </button>
           </form>
           {/* modal content text */}
-          <div className="modal-content flex flex-col justify-center items-center p-4">
+          <div className="modal-content flex flex-col dark:text-gray-200 justify-center items-center p-4 ">
           <form className='px-2 w-full' onSubmit={handleSubmit}>
           <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
             {/* food name  */}
             <div>
-              <label className='text-gray-700 ' htmlFor='food_name'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='food_name'>
                 Food Name
               </label>
               <input
@@ -222,14 +222,14 @@ const FoodDetails = () => {
                 defaultValue={title}
                 readOnly
                 required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
 
             {/* food image */}
 
             <div>
-              <label className='text-gray-700 ' htmlFor='emailAddress'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='emailAddress'>
                 Food Image Url
               </label>
               <input
@@ -239,13 +239,13 @@ const FoodDetails = () => {
                 defaultValue={image}
                 readOnly
                 required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
 
             {/* food id  */}
             <div>
-              <label className='text-gray-700 ' htmlFor='_id'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='_id'>
                 Food ID
               </label>
               <input
@@ -255,12 +255,12 @@ const FoodDetails = () => {
                 defaultValue={_id}
                 readOnly
                 required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
             {/* donator email  */}
             <div>
-              <label className='text-gray-700 ' htmlFor='emailAddress'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='emailAddress'>
                 Food Donator Email
               </label>
               <input
@@ -270,12 +270,12 @@ const FoodDetails = () => {
                 defaultValue={email}
                 readOnly
                 required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
             {/* donator name  */}
             <div>
-              <label className='text-gray-700 ' htmlFor='name'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='name'>
                 Food Donator Name
               </label>
               <input
@@ -285,12 +285,12 @@ const FoodDetails = () => {
                 defaultValue={name}
                 readOnly
                 required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
             {/* current user email  */}
             <div>
-              <label className='text-gray-700 ' htmlFor='name'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='name'>
                 Current User Email
               </label>
               <input
@@ -300,16 +300,16 @@ const FoodDetails = () => {
                 defaultValue={user?.email}
                 readOnly
                 required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
             {/* request date  */}
             <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700'>Request Date</label>
+              <label className='text-gray-700 dark:text-gray-200'>Request Date</label>
 
               {/* Date Picker Input Field */}
               <DatePicker
-                className='border p-2 w-full rounded-md'
+                className='border p-2 w-full dark:bg-[#1E1E1E] dark:text-gray-200 rounded-md'
                 selected={startDate}
                 required
                 readOnly
@@ -318,7 +318,7 @@ const FoodDetails = () => {
             </div>
              {/* expired date */}
              <div>
-              <label className='text-gray-700'>Expired Date</label>
+              <label className='text-gray-700 dark:text-gray-200'>Expired Date</label>
               <input
                 id='deadline'
                 name='deadline'
@@ -326,13 +326,13 @@ const FoodDetails = () => {
                 defaultValue={deadline ? format(new Date(deadline), 'P') : ''}
                 required
                 type='text'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
            
             {/* food location  */}
             <div className="">
-              <label className='text-gray-700 ' htmlFor='location'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='location'>
                 Pickup Location
               </label>
               <input
@@ -342,13 +342,13 @@ const FoodDetails = () => {
                 defaultValue={location}
                 required
                 type='text'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
            
             {/* quantity  */}
             <div className="">
-              <label className='text-gray-700 ' htmlFor='quantity'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='quantity'>
                 Quantity
               </label>
               <input
@@ -358,7 +358,7 @@ const FoodDetails = () => {
                 defaultValue={quantity}
                 required
                 type='text'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
            {/* notes 
@@ -380,11 +380,11 @@ const FoodDetails = () => {
            
           </div>
           <div className='flex flex-col gap-2 mt-4'>
-            <label className='text-gray-700 ' htmlFor='notes'>
+            <label className='text-gray-700 dark:text-gray-200 ' htmlFor='notes'>
               Additional Notes
             </label>
             <textarea
-              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 dark:bg-[#1E1E1E] bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               name='notes'
               id='notes'
               defaultValue={notes}
@@ -392,7 +392,7 @@ const FoodDetails = () => {
             ></textarea>
           </div>
           <div className='flex justify-end mt-10'>
-            <button className=' px-8 py-2.5 w-full leading-5 text-white transition-colors duration-300 transhtmlForm bg-[#ebb475] rounded-md hover:text-black focus:outline-none focus:text-black'>
+            <button className=' px-8 py-2.5 w-full dark:text-gray-700 leading-5 text-white transition-colors duration-300 transhtmlForm bg-[#ebb475] rounded-md hover:text-black focus:outline-none focus:text-black'>
               Request
             </button>
           </div>

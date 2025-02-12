@@ -136,7 +136,7 @@ const Navbar = () => {
 
         <div className="navbar-end">
           <ul className="flex justify-between items-center sm:gap-2  text-sm ">
-            <Darkmode></Darkmode>
+            <Darkmode className=""></Darkmode>
             {!user && (
               <li>
                 <NavLink
@@ -168,7 +168,7 @@ const Navbar = () => {
           </ul>
 
           {user && (
-            <div className="dropdown dropdown-end z-50">
+            <div className="dropdown border-2 rounded-full border-[#ebb475] dropdown-end z-50">
               <div
                 tabIndex={0}
                 role="button"
@@ -184,13 +184,14 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold"
+                className="menu menu-sm dropdown-content mt-3 z-[1] dark:bg-[#1E1E1E] dark:text-gray-200 py-5  mx-auto shadow bg-base-100 rounded-box w-52 font-bold"
               >
                 <li>{user && user?.displayName}</li>
+                <li className="mt-2">{user && user?.email}</li>
                 <li className="mt-2">
                   <button
                     onClick={logOut}
-                    className="bg-[#ebb475] text-white px-3 py-2 hover:bg-[#ebb475] hover:text-black block text-center"
+                    className="bg-[#ebb475] text-white px-3 py-2 dark:text-gray-700 hover:bg-[#ebb475] hover:text-black block text-center"
                   >
                     Logout
                   </button>

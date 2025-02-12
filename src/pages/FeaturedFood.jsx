@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import FoodCard from '../components/FoodCard';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 const FeaturedFood = () => {
    
 
-    const { data:foods , isLoading} = useQuery({ queryKey:['foods'], queryFn: async ()=>{
+    const { data:foods = [] , isLoading} = useQuery({ queryKey:['foods'], queryFn: async ()=>{
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/foods`) 
         return data 
     }})

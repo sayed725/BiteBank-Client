@@ -70,56 +70,59 @@ const AddFood = () => {
   }
 
   return (
-    <div className='lg:w-2/4 mx-auto flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
+    <div className='lg:w-2/4 w-11/12 mx-auto flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
       <Helmet> <title>Bite Bank | Add Food </title></Helmet>
-      <section className='w-full py-10 md:p-6 mx-auto bg-white rounded-md shadow-md '>
-        <h2 className='text-center text-2xl font-semibold text-gray-700 capitalize '>
+      <section className='w-full py-10 md:p-6 mx-auto bg-white dark:bg-[#252525] rounded-md shadow-md '>
+        <h2 className='text-center text-2xl font-semibold text-gray-700 capitalize dark:text-gray-200'>
           Add a Food
         </h2>
 
         <form className='px-2' onSubmit={handleSubmit}>
           <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-1'>
             <div>
-              <label className='text-gray-700 ' htmlFor='food_name'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='food_name'>
                 Food Name
               </label>
               <input
                 id='name'
                 name='name'
                 type='text'
+                placeholder='Food Name'
                 required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white dark:text-gray-200 dark:bg-[#252525] border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
 
             <div>
-              <label className='text-gray-700 ' htmlFor='emailAddress'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='emailAddress'>
                 Food Image Url
               </label>
               <input
                 id='food_image'
                 type='text'
                 name='image'
+                placeholder='Image Url'
                 required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 bg-white border dark:bg-[#252525] border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
 
             <div>
-              <label className='text-gray-700 ' htmlFor='min_price'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='min_price'>
                 Total Quantity
               </label>
               <input
                 id='quantity'
                 name='quantity'
                 type='number'
+                placeholder='Total Quantity'
                 required
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 bg-white border dark:bg-[#252525] border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
 
             <div>
-              <label className='text-gray-700 ' htmlFor='max_price'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='max_price'>
                 Pickup Location
               </label>
               <input
@@ -127,22 +130,23 @@ const AddFood = () => {
                 name='location'
                 required
                 type='text'
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                placeholder='Pickup Location'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 bg-white border dark:bg-[#252525] border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
             <div className='flex flex-col gap-2 '>
-              <label className='text-gray-700'>Expired Date</label>
+              <label className='text-gray-700 dark:text-gray-200'>Expired Date</label>
 
               {/* Date Picker Input Field */}
               <DatePicker
-                className='border p-2 w-full rounded-md'
+                className='border p-2 w-full dark:text-gray-200 dark:bg-[#252525] rounded-md'
                 selected={startDate}
                 required
                 onChange={date => setStartDate(date)}
               />
             </div>
             <div>
-              <label className='text-gray-700 ' htmlFor='max_price'>
+              <label className='text-gray-700 dark:text-gray-200 ' htmlFor='max_price'>
                 Food Status
               </label>
               <input
@@ -152,25 +156,26 @@ const AddFood = () => {
                 type='text'
                 defaultValue={'Available'}
                 readOnly
-                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 bg-white border dark:bg-[#252525] border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               />
             </div>
 
            
           </div>
           <div className='flex flex-col gap-2 mt-4'>
-            <label className='text-gray-700 ' htmlFor='description'>
+            <label className='text-gray-700 dark:text-gray-200 ' htmlFor='description'>
               Additional Notes
             </label>
             <textarea
-              className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+              className='block w-full px-4 py-2 mt-2 text-gray-700 dark:text-gray-200 bg-white border dark:bg-[#252525] border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
               name='notes'
               id='notes'
+              placeholder='Additional Notes'
               required
             ></textarea>
           </div>
           <div className='flex justify-end mt-10'>
-            <button className=' px-8 py-2.5 w-full leading-5 text-white transition-colors duration-300 transhtmlForm bg-[#ebb475] rounded-md hover:text-black focus:outline-none focus:text-black'>
+            <button className=' px-8 py-2.5 w-full leading-5 dark:text-gray-700 text-white transition-colors duration-300 transhtmlForm bg-[#ebb475] rounded-md hover:text-black focus:outline-none focus:text-black'>
               Add Food
             </button>
           </div>

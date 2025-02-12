@@ -55,7 +55,7 @@ if(isLoading) return <LoadingSpinner></LoadingSpinner>
   if (!foods.length) {
     return (
       <div className="py-[100px] min-h-screen">
-        <h2 className="text-4xl text-center font-bold">
+        <h2 className="text-4xl text-center font-bold dark:text-gray-200">
           Please Add Some Food
         </h2>
         
@@ -95,7 +95,7 @@ if(isLoading) return <LoadingSpinner></LoadingSpinner>
     <section className='lg:container px-4 mx-auto pt-12 min-h-screen'>
       <Helmet> <title>Bite Bank | Manage Food </title></Helmet>
       <div className='flex items-center gap-x-3'>
-        <h2 className='text-lg font-medium text-gray-800 '>My Posted Foods</h2>
+        <h2 className='text-lg font-medium text-gray-800 dark:text-gray-200 '>My Posted Foods</h2>
 
         <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
           {foods.length} Food
@@ -106,12 +106,12 @@ if(isLoading) return <LoadingSpinner></LoadingSpinner>
         <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
           <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
             <div className='overflow-hidden border border-gray-200  md:rounded-lg'>
-              <table className='min-w-full divide-y divide-gray-200'>
-                <thead className='bg-gray-50'>
+              <table className='min-w-full divide-y divide-gray-200 dark:bg-[#252525] dark:text-gray-200'>
+                <thead className='bg-gray-50 dark:bg-[#252525] dark:text-gray-200'>
                   <tr>
                     <th
                       scope='col'
-                      className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
+                      className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right dark:text-gray-200 text-gray-500'
                     >
                       <div className='flex items-center gap-x-3'>
                         <span>Title</span>
@@ -120,14 +120,14 @@ if(isLoading) return <LoadingSpinner></LoadingSpinner>
 
                     <th
                       scope='col'
-                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right dark:text-gray-200 text-gray-500'
                     >
                       <span>Expired Date</span>
                     </th>
 
                     <th
                       scope='col'
-                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right dark:text-gray-200 text-gray-500'
                     >
                       <button className='flex items-center gap-x-2'>
                         <span>Quantity</span>
@@ -136,45 +136,45 @@ if(isLoading) return <LoadingSpinner></LoadingSpinner>
 
                     <th
                       scope='col'
-                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right dark:text-gray-200 text-gray-500'
                     >
                       Status
                     </th>
                     <th
                       scope='col'
-                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                      className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right dark:text-gray-200 text-gray-500'
                     >
                       Location
                     </th>
 
-                    <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                    <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right dark:text-gray-200 text-gray-500'>
                       Edit
                     </th>
-                    <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                    <th className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right dark:text-gray-200 text-gray-500'>
                       Delete
                     </th>
                   </tr>
                 </thead>
-                <tbody className='bg-white divide-y divide-gray-200 '>
+                <tbody className='bg-white divide-y divide-gray-200  dark:bg-[#252525] dark:text-gray-200'>
                   {/* Generate dynamic tr */}
                   {foods.map(food => (
                     <tr key={food._id}>
-                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                      <td className='px-4 py-4 text-sm text-gray-500 dark:text-gray-200  whitespace-nowrap'>
                         {food.title}
                       </td>
 
-                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                      <td className='px-4 py-4 text-sm text-gray-500 dark:text-gray-200  whitespace-nowrap'>
                         {format(new Date(food.deadline), 'P')}
                       </td>
 
-                      <td className='px-4 py-4 text-sm text-gray-500   whitespace-nowrap'>
+                      <td className='px-4 py-4 text-sm text-gray-500 dark:text-gray-200   whitespace-nowrap'>
                         {food.quantity}
                       </td>
                       <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-2'>
                           <p
                            className={`px-3 py-1  ${
-                            food.status === "Available" && "text-green-500 bg-green-100/60"
+                            food.status === "Available" && "text-green-500 dark:bg-[#252525] bg-green-100/60"
                           } ${food.status === "Not Available" && "text-red-500 bg-red-100/60"}
                                         ${
                                           food.status === "Requested" &&
@@ -185,14 +185,14 @@ if(isLoading) return <LoadingSpinner></LoadingSpinner>
                           </p>
                         </div>
                       </td>
-                      <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                      <td className='px-4 py-4 text-sm text-gray-500 dark:text-gray-200  whitespace-nowrap'>
                         {food.location}
                       </td>
                       <td className='px-4 py-4 text-sm whitespace-nowrap'>
                         <div className='flex items-center gap-x-6'>
                           <Link
                             to={`/update-food/${food._id}`}
-                            className='text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'
+                            className='text-gray-500 transition-colors duration-200 dark:text-gray-200 dark:hover:text-yellow-500   hover:text-yellow-500 focus:outline-none'
                           >
                             <svg
                               xmlns='http://www.w3.org/2000/svg'
@@ -216,7 +216,7 @@ if(isLoading) return <LoadingSpinner></LoadingSpinner>
                         <Link>
                         <button
                             onClick={() => modernDelete(food._id)}
-                            className='text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'
+                            className='text-gray-500 transition-colors duration-200  dark:text-gray-200 dark:hover:text-red-500  hover:text-red-500 focus:outline-none'
                           >
                             <svg
                               xmlns='http://www.w3.org/2000/svg'
