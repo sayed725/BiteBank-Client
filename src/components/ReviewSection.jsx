@@ -82,7 +82,7 @@ const ReviewSection = () => {
       <Slider {...slickSettings} className="mb-12">
         {testimonials.map((testimonial, index) => (
           <div key={index} className="px-4">
-            <div className="flex flex-col items-center text-center  dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg p-6 shadow-md">
+            <div className="flex flex-col items-center text-center  dark:bg-gray-700 text-white dark:text-gray-200 rounded-lg p-6 shadow-md">
               <p className="text-base sm:text-lg italic mb-6 px-2 sm:px-6">"{testimonial.quote}"</p>
               <div className="flex items-center gap-4">
                 <img
