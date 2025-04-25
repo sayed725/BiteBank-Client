@@ -10,7 +10,7 @@ const Slide = ({ image, text ,link , linkText }) => {
         backgroundImage: `url(${image})`,
       }}
     >
-      <div className='flex items-center justify-center w-full h-full bg-gray-900/50'>
+      <div className='flex items-center justify-center w-full h-full '>
         <div className='text-center'>
           <h1 className='text-3xl mb-4 font-semibold text-white dark:text-gray-200 lg:text-4xl animate__animated animate__slideInDown'>
             {text}
