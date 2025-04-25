@@ -93,6 +93,14 @@ const FoodDetails = () => {
     // console.log(requestData)
     // document.getElementById("my_modal_3").close()
     try {
+
+
+      // 1. check if the user is logged in
+      if (!user) {
+        return toast.error("Please login to request food");
+        
+      }
+      // 2. check if the user has already requested this food
       // 1. make a post request
       await axios.post(`${import.meta.env.VITE_API_URL}/add-request`, requestData)
       .then(res=>{
