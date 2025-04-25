@@ -29,26 +29,41 @@ const FeaturedFood = () => {
         isLoading?  
         (<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
         {/* Render skeleton BedCards while loading */}
-        {Array(6)
+        {Array(8)
           .fill(0)
           .map((_, index) => (
-            <div
-              key={index}
-              className="border rounded-lg shadow-lg p-4 flex flex-col items-center animate-pulse space-y-4"
-            >
-              <div className="flex justify-between items-center w-full">
-                <div className="h-5 bg-gray-300 rounded w-1/3" />
-                <div className="text-end space-y-2">
-                  <div className="h-4 bg-gray-300 rounded w-24" />
-                  <div className="h-6 bg-gray-400 rounded w-20" />
-                </div>
-              </div>
-              <div className="w-full h-60 bg-gray-300 rounded-md" />
-              <div className="flex justify-between w-full space-x-2">
-                <div className="bg-gray-300 rounded-md h-10 w-1/2" />
-                <div className="bg-gray-300 rounded-md h-10 w-1/2" />
-              </div>
-            </div>
+            <div className="w-full bg-white dark:bg-[black] rounded-md hover:scale-[1.05] transition-all animate-pulse">
+      <div className="rounded-lg shadow-md overflow-hidden bg-white dark:bg-[#252525]">
+        {/* Image Section */}
+        <div className="w-full h-48 bg-gray-300 dark:bg-gray-700 rounded-md" />
+
+        {/* Content Section */}
+        <div className="p-4 flex flex-col gap-2">
+          {/* Title and Status */}
+          <div className="flex items-center justify-between">
+            <div className="h-5 bg-gray-300 dark:bg-gray-700 rounded w-1/2" />
+            <div className="h-5 bg-gray-300 dark:bg-gray-700 rounded w-1/4" />
+          </div>
+
+          {/* Donator */}
+          <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4" />
+
+          {/* Location */}
+          <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-2/3" />
+
+          {/* Quantity */}
+          <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2" />
+
+          {/* Expired Date */}
+          <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-2/3" />
+
+          {/* View Details Button */}
+          <div className="flex items-center justify-between text-sm">
+            <div className="w-full h-10 bg-gray-300 dark:bg-gray-700 rounded-md" />
+          </div>
+        </div>
+      </div>
+    </div>
           ))}
       </div>)
         : foods.length === 0 ? <div className='col-span-4 text-center'>
