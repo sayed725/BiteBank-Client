@@ -3,7 +3,7 @@ import FoodCard from '../components/FoodCard';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import LoadingSpinner from '../components/LoadingSpinner';
+
 
 const FeaturedFood = () => {
    
@@ -14,7 +14,7 @@ const FeaturedFood = () => {
     }})
     // console.log(foods, isLoading)
 
-    // if(isLoading) return <LoadingSpinner></LoadingSpinner>
+  
 
 
     return (

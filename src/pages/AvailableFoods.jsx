@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import FoodCard from "../components/FoodCard";
 import { Helmet } from "react-helmet-async";
-import LoadingSpinner from "../components/LoadingSpinner";
+
 import { useQuery } from "@tanstack/react-query";
 import FoodCardSkeleton from "../components/FoodCardSkeleton";
 
