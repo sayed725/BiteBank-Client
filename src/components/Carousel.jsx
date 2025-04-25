@@ -48,7 +48,7 @@ export default function Carousel() {
       {
         breakpoint: 640, // sm
         settings: {
-          arrows: true,
+          arrows: false,
           dots: true,
         },
       },
