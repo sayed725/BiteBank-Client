@@ -78,7 +78,7 @@ export default function Carousel() {
   };
 
   return (
-    <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-auto overflow-hidden">
+    <div className=" lg:w-11/12 rounded-md mx-auto relative w-full h-[60vh] sm:h-[70vh] md:h-auto overflow-hidden">
       <Slider {...settings} className="w-full h-full">
         <div>
           <Slide

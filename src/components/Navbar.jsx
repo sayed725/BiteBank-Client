@@ -196,8 +196,9 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] dark:bg-[#1E1E1E] dark:text-gray-200 py-5  mx-auto shadow bg-base-100 rounded-box w-52 font-bold"
+                className="menu menu-sm dropdown-content mt-3 z-[1] dark:bg-[#1E1E1E] dark:text-gray-200  mx-auto shadow bg-base-100 rounded-box w-[250px] font-bold"
               >
+                <div className="p-3">
                 <li>{user && user?.displayName}</li>
                 <li className="mt-2">{user && user?.email}</li>
                 <li className="mt-2">
@@ -208,6 +209,7 @@ const Navbar = () => {
                     Logout
                   </button>
                 </li>
+                </div>
               </ul>
             </div>
           )}
